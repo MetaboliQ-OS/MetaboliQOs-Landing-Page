@@ -1,0 +1,44 @@
+import type { Metadata } from "next";
+import { Barlow, Barlow_Condensed, Cormorant_Garamond } from "next/font/google";
+import "./globals.css";
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-head",
+  display: "swap",
+});
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-condensed",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  title: "MetaboliQ OS | Powered by MRRRU — Alpha",
+  description:
+    "Your metabolic operating system — built from my real data. Private alpha. Personally proven transformation, REVA AI, Food OS, CGM and Personal Metabolic Memory.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${barlow.variable} ${barlowCondensed.variable}`}
+    >
+      <body className={barlow.className}>{children}</body>
+    </html>
+  );
+}

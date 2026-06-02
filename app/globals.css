@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+:root {
+  --background: #080808;
+  --obsidian: #080808;
+  --dark-1: #0d0d0d;
+  --dark-2: #141414;
+  --dark-3: #1c1c1c;
+  --card: #141414;
+  --gold: #c9a84c;
+  --gold-light: #e8c76a;
+  --gold-dim: #8b6914;
+  --text-primary: #f5f0e8;
+  --text-secondary: #c8bfa8;
+  --text-muted: #7a7060;
+  --border-gold: rgba(201, 168, 76, 0.18);
+  --green: #4caf7d;
+  --red: #e05252;
+  --blue: #4a9ee8;
+  --amber: #e8973a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body), "Barlow", sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-head), "Cormorant Garamond", Georgia, serif;
+  line-height: 1.15;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gold-text {
+  background: linear-gradient(130deg, var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02) 70%
+  );
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border-gold);
+}
+
+.gold-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 12px 0 28px;
+}
+
+.section-pad {
+  padding: 72px 0;
+}
+
+.container-main {
+  width: min(1280px, 92%);
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge-gold {
+  background: rgba(201, 168, 76, 0.15);
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+}
+
+.badge-green {
+  background: rgba(76, 175, 125, 0.15);
+  color: var(--green);
+  border: 1px solid rgba(76, 175, 125, 0.3);
+}
+
+.badge-amber {
+  background: rgba(232, 151, 58, 0.15);
+  color: var(--amber);
+  border: 1px solid rgba(232, 151, 58, 0.3);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  color: #0d0d0d;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 14px 28px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 30px rgba(201, 168, 76, 0.2);
+}
+
+.gold-button {
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  color: #0d0d0d;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.gold-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  box-shadow: 0 4px 30px rgba(201, 168, 76, 0.2);
+}
+
+.btn-ghost {
+  background: rgba(201, 168, 76, 0.04);
+  border: 1px solid var(--border-gold);
+  color: var(--text-secondary);
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(201, 168, 76, 0.45);
+  color: var(--text-primary);
+  background: rgba(201, 168, 76, 0.09);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  border-color: rgba(201, 168, 76, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), 0 4px 30px rgba(201, 168, 76, 0.08);
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 125, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(76, 175, 125, 0);
+  }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes scan-line {
+  0% {
+    top: 20%;
+  }
+  50% {
+    top: 76%;
+  }
+  100% {
+    top: 20%;
+  }
+}
+
+.scan-line {
+  animation: scan-line 2.4s infinite;
+}
+
+.meal-visual {
+  background:
+    radial-gradient(circle at 35% 45%, #e7a93e 0 7%, transparent 8%),
+    radial-gradient(circle at 55% 42%, #d65034 0 7%, transparent 8%),
+    radial-gradient(circle at 48% 62%, #88b04b 0 8%, transparent 9%),
+    linear-gradient(135deg, #1a1a1a, #060606);
+}

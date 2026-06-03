@@ -68,6 +68,9 @@ export async function POST(request: NextRequest) {
     return apiSuccess("A 6-digit verification code was sent to your email.");
   } catch (error) {
     console.error("send-otp error", error);
-    return apiError("Unable to send OTP right now. Check SMTP settings.", 500);
+    return apiError(
+      "We couldn't send your code right now. Please try again in a moment.",
+      500,
+    );
   }
 }

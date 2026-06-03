@@ -5,6 +5,7 @@ const baseSchema = z.object({
   ADMIN_SECRET: z.string().min(8),
   OTP_TTL_MINUTES: z.coerce.number().int().positive().default(10),
   OTP_MAX_REQUESTS_PER_HOUR: z.coerce.number().int().positive().default(5),
+  CRON_SECRET: z.string().min(16).optional(),
 });
 
 const smtpSchema = z.object({
@@ -30,6 +31,7 @@ export function getEnv(): AppEnv {
     ADMIN_SECRET: process.env.ADMIN_SECRET,
     OTP_TTL_MINUTES: process.env.OTP_TTL_MINUTES ?? 10,
     OTP_MAX_REQUESTS_PER_HOUR: process.env.OTP_MAX_REQUESTS_PER_HOUR ?? 5,
+    CRON_SECRET: process.env.CRON_SECRET,
   });
 
   const smtpValues = {

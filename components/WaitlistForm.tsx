@@ -63,6 +63,8 @@ export function WaitlistForm() {
       setStep("otp");
       setMessage(`We sent a 6-digit code to ${values.email}. Check your inbox.`);
       otpForm.reset({ otp: "" });
+    } catch {
+      setError("Something went wrong. Please check your connection and try again.");
     } finally {
       setSubmitting(false);
     }
@@ -85,6 +87,8 @@ export function WaitlistForm() {
         return;
       }
       setMessage(`A new code was sent to ${email}.`);
+    } catch {
+      setError("Something went wrong. Please check your connection and try again.");
     } finally {
       setSubmitting(false);
     }
@@ -107,6 +111,8 @@ export function WaitlistForm() {
       }
       setStep("success");
       setMessage("");
+    } catch {
+      setError("Something went wrong. Please check your connection and try again.");
     } finally {
       setSubmitting(false);
     }

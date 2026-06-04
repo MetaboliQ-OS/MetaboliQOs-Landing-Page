@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import { Barlow, Barlow_Condensed, Cormorant_Garamond } from "next/font/google";
+import { rootMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -22,11 +22,7 @@ const barlowCondensed = Barlow_Condensed({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "MetaboliQ OS | Powered by MRRRU — Alpha",
-  description:
-    "Your metabolic operating system — built from my real data. Private alpha. Personally proven transformation, REVA AI, Food OS, CGM and Personal Metabolic Memory.",
-};
+export const metadata = rootMetadata;
 
 export default function RootLayout({
   children,
@@ -35,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${cormorant.variable} ${barlow.variable} ${barlowCondensed.variable}`}
     >
       <body className={barlow.className}>{children}</body>

@@ -37,7 +37,7 @@ export function Navbar() {
         <a href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
             src="/images/metaboliq-icon.png"
-            alt=""
+            alt="MetaboliQ OS logo"
             width={40}
             height={40}
             className="h-9 w-9 shrink-0 object-contain drop-shadow-[0_0_12px_rgba(201,168,76,0.25)]"

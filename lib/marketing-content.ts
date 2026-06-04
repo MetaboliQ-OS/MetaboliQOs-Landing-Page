@@ -150,7 +150,6 @@ export const ninePillars = [
 
 export const platformModules = [
   {
-    icon: "🤖",
     title: "REVA AI",
     subtitle: "Revamp · Execute · Vitality · Advisor",
     description:
@@ -160,7 +159,6 @@ export const platformModules = [
       "Next phase: 10,000+ rules from personal experiments (I was my own guinea pig), expert data after verification, and extrapolations by sex, ethnicity, medical conditions and age.",
   },
   {
-    icon: "🍽️",
     title: "MetaboliQ Food OS",
     subtitle: "800+ recipes · 90+ countries",
     description:
@@ -171,7 +169,6 @@ export const platformModules = [
     promptExample: "Scan my lunch and tell me what to do next",
   },
   {
-    icon: "📈",
     title: "CGM & Wearables",
     subtitle: "Signals → decisions",
     description:
@@ -179,7 +176,6 @@ export const platformModules = [
     highlights: ["CGM curves", "Wearable sync", "Recovery score", "Trend alerts"],
   },
   {
-    icon: "🫀",
     title: "FaceScan + Signal Suite",
     subtitle: "Visual metabolic signals",
     description:
@@ -187,7 +183,6 @@ export const platformModules = [
     highlights: ["FaceScan demo", "Retina signals", "Home testing layer", "Safety guardrails"],
   },
   {
-    icon: "🩸",
     title: "Blood OS",
     subtitle: "Labs → action",
     description:
@@ -195,7 +190,6 @@ export const platformModules = [
     highlights: ["Marker trends", "Phase mapping", "Evidence library", "Executive summaries"],
   },
   {
-    icon: "🧠",
     title: "Personal Metabolic Memory",
     subtitle: "Your biology, remembered",
     description:

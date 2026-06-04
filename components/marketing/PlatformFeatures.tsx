@@ -3,6 +3,19 @@
 import { motion } from "framer-motion";
 import { platformModules } from "@/lib/marketing-content";
 
+function MicIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 14a3 3 0 003-3V6a3 3 0 00-6 0v5a3 3 0 003 3zm5-3a5 5 0 01-10 0H5a7 7 0 0014 0h-2zm-1 6.5V21h-4v-3.5H7V19h10v-1.5h-1z" />
+    </svg>
+  );
+}
+
+const highlightListClass =
+  "mt-4 list-none space-y-1.5 pl-3 border-l border-[rgba(201,168,76,0.25)]";
+
+const highlightItemClass = "text-xs text-text-secondary";
+
 export function PlatformFeatures() {
   return (
     <section className="section-pad">
@@ -35,7 +48,6 @@ export function PlatformFeatures() {
                 {isFoodOs ? (
                   <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-start">
                     <div>
-                      <div className="mb-3 text-3xl">{mod.icon}</div>
                       <h3 className="text-xl text-[#c9a84c]">{mod.title}</h3>
                       <p className="text-xs uppercase tracking-wider text-text-muted">
                         {mod.subtitle}
@@ -43,12 +55,9 @@ export function PlatformFeatures() {
                       <p className="mt-3 text-sm leading-relaxed text-text-secondary">
                         {mod.description}
                       </p>
-                      <ul className="mt-4 space-y-1.5">
+                      <ul className={highlightListClass}>
                         {mod.highlights.map((h) => (
-                          <li
-                            key={h}
-                            className="text-xs text-text-secondary before:mr-2 before:text-[#c9a84c] before:content-['→']"
-                          >
+                          <li key={h} className={highlightItemClass}>
                             {h}
                           </li>
                         ))}
@@ -72,9 +81,9 @@ export function PlatformFeatures() {
                             <button
                               type="button"
                               aria-label="Voice input (demo)"
-                              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[rgba(201,168,76,0.35)] bg-[rgba(201,168,76,0.1)] text-lg text-[#c9a84c]"
+                              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[rgba(201,168,76,0.35)] bg-[rgba(201,168,76,0.1)] text-[#c9a84c]"
                             >
-                              🎤
+                              <MicIcon />
                             </button>
                           </div>
                         </div>
@@ -83,7 +92,6 @@ export function PlatformFeatures() {
                   </div>
                 ) : (
                   <>
-                    <div className="mb-3 text-3xl">{mod.icon}</div>
                     <h3 className="text-xl text-[#c9a84c]">{mod.title}</h3>
                     <p className="text-xs uppercase tracking-wider text-text-muted">
                       {mod.subtitle}
@@ -91,12 +99,9 @@ export function PlatformFeatures() {
                     <p className="mt-3 text-sm leading-relaxed text-text-secondary">
                       {mod.description}
                     </p>
-                    <ul className="mt-4 space-y-1.5">
+                    <ul className={highlightListClass}>
                       {mod.highlights.map((h) => (
-                        <li
-                          key={h}
-                          className="text-xs text-text-secondary before:mr-2 before:text-[#c9a84c] before:content-['→']"
-                        >
+                        <li key={h} className={highlightItemClass}>
                           {h}
                         </li>
                       ))}

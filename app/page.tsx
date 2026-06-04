@@ -1,4 +1,16 @@
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Navbar } from "@/components/marketing/Navbar";
+import { createPageMetadata } from "@/lib/seo";
+import { homePageJsonLd } from "@/lib/json-ld";
+import { siteConfig } from "@/lib/site";
+
+export const metadata: Metadata = createPageMetadata({
+  title: siteConfig.defaultTitle,
+  description: siteConfig.defaultDescription,
+  path: "/",
+  ogImageAlt: "MetaboliQ OS — founder-proven metabolic operating system",
+});
 import { Hero } from "@/components/marketing/Hero";
 import { VisualDemoLayer } from "@/components/marketing/VisualDemoLayer";
 import { PlatformPreview } from "@/components/marketing/PlatformPreview";
@@ -25,7 +37,9 @@ import { RevaCommandBar } from "@/components/marketing/RevaCommandBar";
 
 export default function HomePage() {
   return (
-    <main>
+    <>
+      <JsonLd data={homePageJsonLd()} />
+      <main>
       <Navbar />
       <Hero />
       <VisualDemoLayer />
@@ -51,5 +65,6 @@ export default function HomePage() {
       <Footer />
       <RevaCommandBar />
     </main>
+    </>
   );
 }

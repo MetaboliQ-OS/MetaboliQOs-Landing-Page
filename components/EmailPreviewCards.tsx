@@ -23,8 +23,8 @@ export function EmailPreviewCards() {
         {cards.map((card) => (
           <article key={card.title} className="glass rounded-2xl p-5">
             <p className="text-xs uppercase tracking-[0.22em] text-[#c9a84c]">Preview</p>
-            <h3 className="mt-3 text-lg font-semibold text-[#f5f0e8]">{card.title}</h3>
-            <p className="mt-2 text-sm text-[#c8bfa8]">{card.text}</p>
+            <h3 className="mt-3 text-lg font-semibold text-text-primary">{card.title}</h3>
+            <p className="mt-2 text-sm text-text-secondary">{card.text}</p>
           </article>
         ))}
       </div>

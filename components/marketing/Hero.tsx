@@ -69,14 +69,16 @@ export function Hero() {
 
           <div className="mb-6 flex flex-wrap gap-2">
             <span className="badge badge-gold">Personally Proven · No GLP-1 · No Shortcuts</span>
-            <span className="badge badge-amber">200+ Personal Experiments</span>
+            <span className="badge badge-amber">
+              1,500+ Experiments &amp; Case Studies · MRRRU Journal
+            </span>
             <span className="badge badge-green">Zero Paid Sponsors</span>
           </div>
 
           <h1 className="mb-6 text-[clamp(2.4rem,6vw,4.8rem)] leading-[1.05]">
             <span className="block">Your Metabolic</span>
             <span className="gold-text block">Operating System</span>
-            <span className="mt-2 block text-[0.55em] italic text-[#c8bfa8]">
+            <span className="mt-2 block text-[0.55em] italic text-text-secondary">
               Built from My Real Data
             </span>
           </h1>
@@ -86,17 +88,19 @@ export function Hero() {
             <FounderPortrait className="w-[min(78vw,320px)]" />
           </div>
 
-          <p className="mb-4 max-w-xl text-lg text-[#c8bfa8] leading-relaxed">
+          <p className="mb-4 max-w-xl text-lg text-text-secondary leading-relaxed">
             HbA1c from <strong className="text-[#E05252]">8.3%</strong> to{" "}
-            <strong className="text-[#4CAF7D]">5.3%</strong>. BP from{" "}
+            <strong className="text-[#4CAF7D]">5.3%</strong>. Weight from{" "}
+            <strong className="text-[#E05252]">83 kg</strong> to{" "}
+            <strong className="text-[#4CAF7D]">69 kg</strong>. BP from{" "}
             <strong className="text-[#E05252]">212/109</strong> to{" "}
             <strong className="text-[#4CAF7D]">124/80</strong>. Visceral fat from{" "}
             <strong className="text-[#E05252]">15–16</strong> to{" "}
-            <strong className="text-[#4CAF7D]">11–12</strong>. Five months. No drugs.
+            <strong className="text-[#4CAF7D]">11</strong>. Five months. No drugs.
             Documented daily.
           </p>
 
-          <p className="mb-8 max-w-xl text-[0.95rem] text-[#7a7060]">
+          <p className="mb-8 max-w-xl text-[0.95rem] text-text-muted">
             My longevity journey — documented in real time. Not a static programme. Follow along
             as I build MetaboliQ OS through alpha.
           </p>
@@ -117,7 +121,7 @@ export function Hero() {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <a href="#platform" className="btn-gold">
+            <a href="#demo-platform" className="btn-gold">
               Explore Alpha Platform →
             </a>
             <a href="#my-story" className="btn-ghost">
@@ -153,7 +157,7 @@ export function Hero() {
               >
                 {stat.value}
               </div>
-              <div className="text-[0.72rem] uppercase tracking-[0.1em] text-[#7a7060]">
+              <div className="text-[0.72rem] uppercase tracking-[0.1em] text-text-muted">
                 {stat.label}
               </div>
             </div>

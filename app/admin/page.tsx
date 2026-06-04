@@ -38,16 +38,16 @@ export default function AdminWaitlistPage() {
   }
 
   return (
-    <main className="mx-auto min-h-screen w-[92%] max-w-4xl py-12 text-[#f5f0e8]">
+    <main className="mx-auto min-h-screen w-[92%] max-w-4xl py-12 text-text-primary">
       <h1 className="text-3xl font-semibold">
         Waitlist <span className="gold-text">Admin</span>
       </h1>
-      <p className="mt-2 text-sm text-[#c8bfa8]">
+      <p className="mt-2 text-sm text-text-secondary">
         View verified emails stored in PostgreSQL.
       </p>
 
       <div className="glass mt-8 space-y-4 rounded-2xl p-6">
-        <label className="block text-sm text-[#c8bfa8]">Admin secret</label>
+        <label className="block text-sm text-text-secondary">Admin secret</label>
         <input
           type="password"
           value={secret}
@@ -67,9 +67,9 @@ export default function AdminWaitlistPage() {
       </div>
 
       <div className="glass mt-6 rounded-2xl p-6">
-        <p className="mb-4 text-sm text-[#c8bfa8]">Total verified: {total}</p>
+        <p className="mb-4 text-sm text-text-secondary">Total verified: {total}</p>
         {users.length === 0 ? (
-          <p className="text-sm text-[#c8bfa8]">No verified emails loaded yet.</p>
+          <p className="text-sm text-text-secondary">No verified emails loaded yet.</p>
         ) : (
           <ul className="space-y-2">
             {users.map((user) => (
@@ -78,7 +78,7 @@ export default function AdminWaitlistPage() {
                 className="flex flex-col justify-between gap-1 rounded-lg border border-[rgba(201,168,76,0.18)] bg-[#111111] px-4 py-3 md:flex-row md:items-center"
               >
                 <span>{user.email}</span>
-                <span className="text-xs text-[#c8bfa8]">
+                <span className="text-xs text-text-secondary">
                   {new Date(user.createdAt).toLocaleString()}
                 </span>
               </li>

@@ -33,10 +33,10 @@ export function MRRRUSection() {
                   >
                     {item.letter}
                   </div>
-                  <div className="mt-2 text-[0.58rem] font-bold uppercase leading-tight tracking-wide text-[#c8bfa8] sm:text-[0.62rem]">
+                  <div className="mt-2 text-[0.58rem] font-bold uppercase leading-tight tracking-wide text-text-secondary sm:text-[0.62rem]">
                     {item.title}
                   </div>
-                  <div className="mt-0.5 text-[0.55rem] leading-tight text-[#7a7060] sm:text-[0.6rem]">
+                  <div className="mt-0.5 text-[0.55rem] leading-tight text-text-muted sm:text-[0.6rem]">
                     {item.subtitle}
                   </div>
                 </div>
@@ -50,23 +50,24 @@ export function MRRRUSection() {
               transition={{ delay: 0.08 }}
               className="space-y-4"
             >
-              <p className="text-[0.98rem] leading-relaxed text-[#c8bfa8] md:text-base">
+              <p className="text-[0.98rem] leading-relaxed text-text-secondary md:text-base">
+                Over 1,500 experiments and case studies journal for the MRRRU system developed.
                 MRRRU is more than a framework acronym — it is my personal motivational call.
                 During the hardest moments — a workout when every muscle screams to stop, a craving
                 that would break the protocol, a social moment where everyone else orders freely — I
                 say it out loud: <strong className="text-[#c9a84c]">MRRRU.</strong> Each letter is
                 a reminder of what you are doing and why.
               </p>
-              <blockquote className="rounded-2xl border border-[rgba(201,168,76,0.15)] border-l-[3px] border-l-[#c9a84c] bg-[rgba(0,0,0,0.35)] px-4 py-4 italic leading-relaxed text-[#c8bfa8] sm:px-5 sm:py-5">
+              <blockquote className="rounded-2xl border border-[rgba(201,168,76,0.15)] border-l-[3px] border-l-[#c9a84c] bg-[rgba(0,0,0,0.35)] px-4 py-4 italic leading-relaxed text-text-secondary sm:px-5 sm:py-5">
                 &ldquo;When the craving hits at 11pm. When you&apos;re staring at bread at dinner.
                 When the workout feels impossible at day 47. You say it.{" "}
                 <strong className="text-[#c9a84c]">MRRRU.</strong> It is your biology fighting
                 back. And your mission overriding it.&rdquo;
-                <footer className="mt-3 block text-sm not-italic text-[#7a7060]">
+                <footer className="mt-3 block text-sm not-italic text-text-muted">
                   — Mru Patel
                 </footer>
               </blockquote>
-              <p className="text-sm leading-relaxed text-[#7a7060]">
+              <p className="text-sm leading-relaxed text-text-muted">
                 The roar is not aggression. It is a commitment signal — the moment you choose data
                 over desire, protocol over impulse, longevity over immediate gratification. MRRRU
                 is the sound of a system winning over its own damage.

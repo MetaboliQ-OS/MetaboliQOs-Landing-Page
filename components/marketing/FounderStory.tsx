@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { BioImpedanceReadings } from "@/components/marketing/BioImpedanceReadings";
 import { CgmMetabolicPanels } from "@/components/marketing/CgmMetabolicPanels";
 
 export function FounderStory() {
@@ -10,12 +11,14 @@ export function FounderStory() {
       <div className="container-main">
         <div className="mb-4 flex flex-wrap gap-2">
           <span className="badge badge-gold">My Story</span>
-          <span className="badge badge-amber">Phase 3 of 6 · My Active Journey</span>
+          <span className="badge badge-amber">
+            Phase 3 · Food Intelligence, Wearables, BIA & CGM
+          </span>
         </div>
 
         <h2 className="gold-text mb-2 text-[clamp(2rem,4vw,3rem)] italic leading-tight">
           I Ran Too Fast
-          <span className="mt-2 block text-[0.55em] not-italic text-[#c8bfa8]">
+          <span className="mt-2 block text-[0.55em] not-italic text-text-secondary">
             And Forgot My Own Biology
           </span>
         </h2>
@@ -25,23 +28,25 @@ export function FounderStory() {
           <div className="glass card-hover rounded-2xl p-5">
             <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
               <span className="badge badge-gold">My Proof Dashboard</span>
-              <span className="text-xs text-[#7a7060]">My before → after · 5-month case study</span>
+              <span className="text-xs text-text-muted">My before → after · 5-month case study</span>
             </div>
             <h3 className="mb-2 text-xl text-[#c9a84c]">My journey becomes the product</h3>
-            <p className="text-sm text-[#c8bfa8] leading-relaxed">
-              My story feeds the MRRRU rules, FoodOS recipes, CGM experiments, behaviour loops,
-              safety guardrails and Personal Metabolic Memory design in MetaboliQ OS.
+            <p className="text-sm text-text-secondary leading-relaxed">
+              My story feeds the MRRRU rules, FoodOS recipes, CGM experiments, bio-impedance scale
+              readings, behaviour loops, safety guardrails and Personal Metabolic Memory design in
+              MetaboliQ OS.
             </p>
           </div>
-          <div className="glass card-hover rounded-2xl p-5">
-            <p className="text-sm text-[#c8bfa8]">
-              <strong className="text-[#f5f0e8]">50 founding members only.</strong> First come,
-              first served. Beta testers get founding member pricing locked for life + direct access
-              to me.
+          <div className="glass card-hover rounded-2xl p-5 flex flex-col justify-center">
+            <p
+              className="text-lg leading-snug text-[#e8c76a]"
+              style={{ fontFamily: "var(--font-head)" }}
+            >
+              Looking for the right 50 founding members only
             </p>
-            <p className="mt-3 text-xs text-[#7a7060]">
-              Visual examples are demo representations — not medical advice.
-            </p>
+            <a href="#alpha" className="btn-ghost mt-4 w-fit text-sm">
+              Join the founding list →
+            </a>
           </div>
         </div>
 
@@ -53,23 +58,70 @@ export function FounderStory() {
         >
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <span className="badge badge-gold">My Transformation</span>
-            <span className="text-xs text-[#7a7060]">
+            <span className="text-xs text-text-muted">
               Before → After · 5-month personal case study
             </span>
           </div>
-          <div className="mx-auto w-full max-w-[min(94vw,820px)] overflow-hidden rounded-3xl border border-[rgba(201,168,76,0.35)] bg-[#0a0a0a] shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
-            <Image
-              src="/images/founder-before-after.png"
-              alt="Mru Patel before and after transformation — my 5 month metabolic journey with MetaboliQ OS"
-              width={1122}
-              height={1402}
-              className="mx-auto h-auto w-full max-h-[min(62vh,560px)] object-contain sm:max-h-[min(68vh,640px)] lg:max-h-[min(72vh,700px)]"
-              priority
-              sizes="(max-width: 768px) 94vw, 820px"
-            />
+
+          <p className="mb-6 max-w-3xl text-sm leading-relaxed text-text-secondary">
+            The same person, five months apart — documented on bio-impedance scales, blood markers,
+            CGM and daily journals. July: higher visceral load and metabolic stress. December:
+            leaner midsection, stronger recovery and the system that became MetaboliQ OS.
+          </p>
+
+          <div className="mx-auto grid w-full max-w-[720px] grid-cols-2 gap-4 sm:max-w-[840px] sm:gap-5 md:max-w-[960px]">
+            <figure className="flex min-w-0 flex-col">
+              <div className="flex h-[260px] items-center justify-center overflow-hidden rounded-xl border border-[rgba(201,168,76,0.35)] bg-[#0a0a0a] sm:h-[300px] md:h-[340px]">
+                <Image
+                  src="/images/founder-before-after.png"
+                  alt="Mru Patel before and after transformation — MetaboliQ OS coming soon poster"
+                  width={1122}
+                  height={1402}
+                  className="max-h-full max-w-full object-contain object-center"
+                  priority
+                  sizes="(max-width: 768px) 44vw, 460px"
+                />
+              </div>
+              <figcaption className="mt-2 text-center text-[0.65rem] text-text-muted sm:text-xs">
+                Before → After · MetaboliQ OS founder journey
+              </figcaption>
+            </figure>
+
+            <figure className="flex min-w-0 flex-col">
+              <div className="flex h-[260px] items-center justify-center overflow-hidden rounded-xl border border-[rgba(74,158,232,0.25)] bg-[#050810] p-1.5 sm:h-[300px] sm:p-2 md:h-[340px]">
+                <Image
+                  src="/images/founder-july-december-2025.png"
+                  alt="Mru Patel — July 2025 before and December 2025 after, side by side"
+                  width={900}
+                  height={1200}
+                  className="max-h-full max-w-full object-contain object-center"
+                  sizes="(max-width: 768px) 44vw, 460px"
+                />
+              </div>
+              <figcaption className="mt-3">
+                <div className="grid grid-cols-2 gap-2 text-center sm:gap-3">
+                  <div className="rounded-xl border border-[rgba(224,82,82,0.25)] bg-[rgba(224,82,82,0.06)] px-2 py-2 sm:px-3 sm:py-2.5">
+                    <p className="text-[0.65rem] font-bold uppercase tracking-wider text-[#E05252]">
+                      July 2025
+                    </p>
+                    <p className="mt-1 text-xs text-text-muted">Before · baseline</p>
+                  </div>
+                  <div className="rounded-xl border border-[rgba(76,175,125,0.25)] bg-[rgba(76,175,125,0.06)] px-2 py-2 sm:px-3 sm:py-2.5">
+                    <p className="text-[0.65rem] font-bold uppercase tracking-wider text-[#4CAF7D]">
+                      December 2025
+                    </p>
+                    <p className="mt-1 text-xs text-text-muted">After · 5 months</p>
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
           </div>
-          <p className="mt-3 text-center text-xs text-[#7a7060]">
-            My documented transformation. Not medical advice. Individual results vary.
+
+          <p className="mt-4 text-center text-xs text-text-muted">
+            Weight <strong className="text-text-secondary">83 kg → 69 kg</strong> · visceral fat{" "}
+            <strong className="text-text-secondary">15–16 → 11</strong> · HbA1c{" "}
+            <strong className="text-text-secondary">8.3% → 5.3%</strong> · no GLP-1 ·
+            clinician-supervised personal data. Not medical advice. Individual results vary.
           </p>
         </motion.div>
 
@@ -78,7 +130,7 @@ export function FounderStory() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-5 text-[#c8bfa8] leading-relaxed"
+            className="space-y-5 text-text-secondary leading-relaxed"
           >
             <p>
               For decades, I believed that drive, discipline and output were the same as health. I
@@ -89,15 +141,17 @@ export function FounderStory() {
             <p>
               I applied the same methodology I use to turn around distressed companies. I treated
               my own biology as a broken system requiring a structured turnaround — not willpower,{" "}
-              <strong className="text-[#f5f0e8]">data</strong>. I sourced research from hundreds of
+              <strong className="text-text-primary">data</strong>. I sourced research from hundreds of
               global experts across metabolic medicine, endocrinology, chronobiology, nutrition
               science, longevity research and behavioural science.
             </p>
             <p>
               Then I became my own experiment — tracking every meal, glucose response, blood marker,
-              sleep cycle and stress pattern. I documented everything in journals and built MRRRU
-              from those journals.
+              bio-impedance scale readings, sleep cycle and stress pattern. I documented everything
+              in journals and built MRRRU from those journals.
             </p>
+
+            <BioImpedanceReadings />
             <p>
               <strong className="text-[#c9a84c]">This is not a completed story.</strong> I am
               currently in Phase 3 of 6 — building toward Longevity Sovereignty & Personal Metabolic
@@ -107,7 +161,7 @@ export function FounderStory() {
             <blockquote className="glass rounded-xl p-4 italic">
               &ldquo;I did not fix my metabolism with motivation. I fixed it with measurement,
               sequencing, and a system I could run every day.&rdquo;
-              <footer className="mt-2 text-sm not-italic text-[#7a7060]">
+              <footer className="mt-2 text-sm not-italic text-text-muted">
                 — Mru Patel, Creator of MetaboliQ OS
               </footer>
             </blockquote>
@@ -120,15 +174,37 @@ export function FounderStory() {
             transition={{ delay: 0.1 }}
             className="space-y-4"
           >
+            <div className="rounded-2xl border border-[rgba(201,168,76,0.35)] bg-gradient-to-br from-[rgba(201,168,76,0.12)] to-[rgba(0,0,0,0.35)] p-5">
+              <span className="badge badge-amber mb-3">Private beta</span>
+              <h3
+                className="text-[clamp(1.15rem,2.5vw,1.45rem)] leading-snug text-[#e8c76a]"
+                style={{ fontFamily: "var(--font-head)" }}
+              >
+                Looking for the right 50 founding members only
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary">
+                First come, first served. Beta testers get founding member pricing locked for life
+                and direct access to me — not a mass launch.
+              </p>
+              <a
+                href="#alpha"
+                className="btn-gold mt-4 inline-flex text-sm"
+              >
+                Secure your spot →
+              </a>
+            </div>
+
             <CgmMetabolicPanels />
 
             <div className="glass rounded-2xl p-4">
-              <p className="text-sm text-[#c8bfa8]">
-                <strong className="text-[#c9a84c]">Phase 3: Food Intelligence & CGM</strong> —
-                This is where I am now. CGM experiments, meal sequencing and glucose response data
-                being mapped. I am sharing the journey publicly.
+              <p className="text-sm text-text-secondary">
+                <strong className="text-[#c9a84c]">
+                  Phase 3: Food Intelligence, Wearables, Bio Impedance & CGM
+                </strong>{" "}
+                — Food OS, wearable sync, bio-impedance scales and CGM experiments. Sleep and
+                movement feed Personal Metabolic Memory next.
               </p>
-              <p className="mt-2 text-xs text-[#7a7060]">
+              <p className="mt-2 text-xs text-text-muted">
                 My goal: Phase 6 Longevity — performance-grade health with minimal medication
                 dependency.
               </p>

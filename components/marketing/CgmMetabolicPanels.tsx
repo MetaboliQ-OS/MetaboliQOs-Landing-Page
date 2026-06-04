@@ -62,7 +62,7 @@ export function CgmMetabolicPanels() {
     <div className="grid gap-3 md:grid-cols-2">
       {/* Baseline — home glucose */}
       <div className="glass rounded-2xl p-4">
-        <p className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#7a7060]">
+        <p className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-text-muted">
           Home glucose test · baseline moment
         </p>
         <div className="mt-3 rounded-xl border-2 border-[rgba(255,255,255,0.08)] bg-[#101010] p-4 shadow-[inset_0_0_0_1px_rgba(201,168,76,0.08)]">
@@ -86,25 +86,25 @@ export function CgmMetabolicPanels() {
             <b className="block text-lg text-[#E05252]" style={{ fontFamily: "var(--font-head)" }}>
               8.3%
             </b>
-            <span className="text-[0.58rem] uppercase tracking-wider text-[#7a7060]">HbA1c start</span>
+            <span className="text-[0.58rem] uppercase tracking-wider text-text-muted">HbA1c start</span>
           </div>
           <div className="rounded-xl border border-[rgba(201,168,76,0.14)] bg-[rgba(0,0,0,0.25)] p-2.5 text-center">
             <b className="block text-lg text-[#E05252]" style={{ fontFamily: "var(--font-head)" }}>
               212/109
             </b>
-            <span className="text-[0.58rem] uppercase tracking-wider text-[#7a7060]">BP spike</span>
+            <span className="text-[0.58rem] uppercase tracking-wider text-text-muted">BP spike</span>
           </div>
         </div>
       </div>
 
       {/* Rebuilt — CGM response */}
       <div className="glass rounded-2xl p-4">
-        <p className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#7a7060]">
+        <p className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-text-muted">
           CGM / metabolic response view · rebuilt
         </p>
         <div className="mt-3 rounded-xl border border-[rgba(201,168,76,0.15)] bg-[#111] p-3">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[0.62rem] uppercase tracking-widest text-[#7a7060]">
+            <span className="text-[0.62rem] uppercase tracking-widest text-text-muted">
               Current trend
             </span>
             <span className="badge badge-green text-[0.6rem]">Stable</span>
@@ -115,7 +115,7 @@ export function CgmMetabolicPanels() {
           >
             5.3
           </p>
-          <p className="text-[0.65rem] text-[#7a7060]">mmol/L demo reading</p>
+          <p className="text-[0.65rem] text-text-muted">mmol/L demo reading</p>
           <CgmCurve />
         </div>
         <div className="mt-3 grid grid-cols-2 gap-2">
@@ -123,13 +123,13 @@ export function CgmMetabolicPanels() {
             <b className="block text-lg text-[#4CAF7D]" style={{ fontFamily: "var(--font-head)" }}>
               5.3%
             </b>
-            <span className="text-[0.58rem] uppercase tracking-wider text-[#7a7060]">HbA1c after</span>
+            <span className="text-[0.58rem] uppercase tracking-wider text-text-muted">HbA1c after</span>
           </div>
           <div className="rounded-xl border border-[rgba(201,168,76,0.14)] bg-[rgba(0,0,0,0.25)] p-2.5 text-center">
             <b className="block text-lg text-[#4CAF7D]" style={{ fontFamily: "var(--font-head)" }}>
               124/80
             </b>
-            <span className="text-[0.58rem] uppercase tracking-wider text-[#7a7060]">BP after</span>
+            <span className="text-[0.58rem] uppercase tracking-wider text-text-muted">BP after</span>
           </div>
         </div>
       </div>

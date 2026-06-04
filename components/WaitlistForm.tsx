@@ -150,12 +150,12 @@ export function WaitlistForm() {
               </span>
             </div>
             <h3
-              className="text-[1.7rem] leading-tight text-[#f5f0e8]"
+              className="text-[1.7rem] leading-tight text-text-primary"
               style={{ fontFamily: "var(--font-head)" }}
             >
               Claim your MetaboliQ OS spot
             </h3>
-            <p className="text-sm leading-relaxed text-[#c8bfa8]">
+            <p className="text-sm leading-relaxed text-text-secondary">
               Enter your email and we&apos;ll send a 6-digit code to verify you. Founding members
               lock in early pricing for life.
             </p>
@@ -163,7 +163,7 @@ export function WaitlistForm() {
               type="email"
               placeholder="you@company.com"
               autoComplete="email"
-              className="w-full rounded-xl border border-[rgba(201,168,76,0.25)] bg-[#0c0b09] px-4 py-3.5 text-[#f5f0e8] outline-none transition placeholder:text-[#6b6354] focus:border-[#c9a84c] focus:ring-2 focus:ring-[rgba(201,168,76,0.22)]"
+              className="w-full rounded-xl border border-[rgba(201,168,76,0.25)] bg-[#0c0b09] px-4 py-3.5 text-text-primary outline-none transition placeholder:text-text-placeholder focus:border-[#c9a84c] focus:ring-2 focus:ring-[rgba(201,168,76,0.22)]"
               {...emailForm.register("email")}
             />
             {emailForm.formState.errors.email && (
@@ -176,7 +176,7 @@ export function WaitlistForm() {
             >
               {submitting ? "Sending code…" : "Claim My Spot"}
             </button>
-            <p className="flex items-center justify-center gap-1.5 text-center text-[0.7rem] text-[#7a7060]">
+            <p className="flex items-center justify-center gap-1.5 text-center text-[0.7rem] text-text-muted">
               <span aria-hidden>🔒</span> Secure one-time code · No spam, ever
             </p>
           </motion.form>
@@ -193,8 +193,8 @@ export function WaitlistForm() {
           >
             <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">Verify Email</p>
             <h3 className="text-2xl font-semibold">Enter your OTP</h3>
-            <p className="text-sm text-[#c8bfa8]">
-              Code sent to <span className="text-[#f5f0e8]">{email}</span>
+            <p className="text-sm text-text-secondary">
+              Code sent to <span className="text-text-primary">{email}</span>
             </p>
             <input
               type="text"
@@ -202,7 +202,7 @@ export function WaitlistForm() {
               pattern="[0-9]*"
               maxLength={6}
               placeholder="000000"
-              className="w-full rounded-xl border border-[rgba(201,168,76,0.2)] bg-[#0f0f0f] px-4 py-3 text-center text-2xl tracking-[0.4em] text-[#f5f0e8] outline-none focus:border-[#c9a84c]"
+              className="w-full rounded-xl border border-[rgba(201,168,76,0.2)] bg-[#0f0f0f] px-4 py-3 text-center text-2xl tracking-[0.4em] text-text-primary outline-none focus:border-[#c9a84c]"
               {...otpForm.register("otp", {
                 onChange: (e) => {
                   e.target.value = e.target.value.replace(/\D/g, "").slice(0, 6);
@@ -223,7 +223,7 @@ export function WaitlistForm() {
               type="button"
               disabled={submitting}
               onClick={resendOtp}
-              className="w-full text-sm text-[#c8bfa8] underline-offset-2 hover:text-[#e8c76a] hover:underline disabled:opacity-50"
+              className="w-full text-sm text-text-secondary underline-offset-2 hover:text-[#e8c76a] hover:underline disabled:opacity-50"
             >
               Resend code
             </button>
@@ -234,7 +234,7 @@ export function WaitlistForm() {
                 setError("");
                 setMessage("");
               }}
-              className="w-full text-sm text-[#c8bfa8] hover:text-[#f5f0e8]"
+              className="w-full text-sm text-text-secondary hover:text-text-primary"
             >
               Use a different email
             </button>
@@ -249,10 +249,10 @@ export function WaitlistForm() {
             className="space-y-4"
           >
             <h3 className="text-2xl font-semibold">🎉 You&apos;re On The Waitlist</h3>
-            <p className="text-[#c8bfa8]">
+            <p className="text-text-secondary">
               Thank you for joining MetaboliQ OS.
               <br />
-              Your email <span className="text-[#f5f0e8]">{email}</span> has been verified and
+              Your email <span className="text-text-primary">{email}</span> has been verified and
               saved.
               <br />
               We will notify you as soon as beta access becomes available.

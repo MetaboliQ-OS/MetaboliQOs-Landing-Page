@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@theme inline {
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-placeholder: var(--text-placeholder);
+}
+
 :root {
   --background: #080808;
   --obsidian: #080808;
@@ -10,9 +17,10 @@
   --gold: #c9a84c;
   --gold-light: #e8c76a;
   --gold-dim: #8b6914;
-  --text-primary: #f5f0e8;
-  --text-secondary: #c8bfa8;
-  --text-muted: #7a7060;
+  --text-primary: #faf7f2;
+  --text-secondary: #e4dbc8;
+  --text-muted: #b0a693;
+  --text-placeholder: #8f8678;
   --border-gold: rgba(201, 168, 76, 0.18);
   --green: #4caf7d;
   --red: #e05252;
@@ -36,6 +44,16 @@ body {
   font-family: var(--font-body), "Barlow", sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+body.has-reva-command-bar {
+  padding-bottom: 120px;
+}
+
+@media (max-width: 768px) {
+  body.has-reva-command-bar {
+    padding-bottom: 148px;
+  }
 }
 
 h1,

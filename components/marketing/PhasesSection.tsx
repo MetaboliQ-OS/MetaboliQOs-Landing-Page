@@ -11,7 +11,7 @@ export function PhasesSection() {
       style={{ background: "linear-gradient(180deg, #0d0d0d, #080808)" }}
     >
       <div className="container-main">
-        <span className="text-xs font-bold uppercase tracking-[0.14em] text-[#7a7060]">
+        <span className="text-xs font-bold uppercase tracking-[0.14em] text-text-muted">
           The Framework
         </span>
         <h2 className="gold-text mt-2 mb-2 text-[clamp(2rem,4vw,3rem)] italic leading-tight">
@@ -20,7 +20,7 @@ export function PhasesSection() {
           Metabolic Operating System
         </h2>
         <div className="gold-line" />
-        <p className="mb-10 max-w-2xl text-[#c8bfa8]">
+        <p className="mb-10 max-w-2xl text-text-secondary">
           Not a diet. Not a protocol. A living decision framework built from thousands of real
           data loops — food, glucose, sleep, stress, blood markers and movement — tested on me
           first.
@@ -40,24 +40,23 @@ export function PhasesSection() {
                   : "border-[rgba(201,168,76,0.15)]"
               }`}
             >
-              <div className="mb-3 flex items-start gap-3">
-                <span className="text-2xl">{phase.icon}</span>
-                <div>
-                  <p className="text-[0.7rem] uppercase tracking-wider text-[#7a7060]">
-                    Phase {phase.id}
-                    {phase.founderActive ? " ✦ My Active Phase" : phase.active ? " ✦" : ""}
-                  </p>
-                  <h3 className="text-lg font-semibold" style={{ color: phase.accent }}>
-                    {phase.title}
-                  </h3>
-                </div>
+              <div className="mb-3">
+                <p className="text-[0.7rem] font-bold uppercase tracking-wider text-text-secondary">
+                  Phase {phase.id}
+                  {phase.founderActive ? (
+                    <span className="text-[#c9a84c]"> · My Active Phase</span>
+                  ) : null}
+                </p>
+                <h3 className="mt-1 text-lg font-semibold" style={{ color: phase.accent }}>
+                  {phase.title}
+                </h3>
               </div>
-              <p className="text-sm text-[#c8bfa8] leading-relaxed">{phase.description}</p>
+              <p className="text-sm text-text-secondary leading-relaxed">{phase.description}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {phase.chips.map((chip) => (
                   <span
                     key={chip}
-                    className="rounded-full border border-[rgba(201,168,76,0.15)] bg-[rgba(201,168,76,0.04)] px-2.5 py-1 text-xs text-[#c8bfa8]"
+                    className="rounded-full border border-[rgba(201,168,76,0.15)] bg-[rgba(201,168,76,0.04)] px-2.5 py-1 text-xs text-text-secondary"
                   >
                     {chip}
                   </span>

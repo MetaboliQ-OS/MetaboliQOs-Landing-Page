@@ -2,18 +2,29 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
-  { href: "#my-story", label: "My Story" },
-  { href: "#mrrru", label: "MRRRU" },
-  { href: "#platform", label: "Platform" },
-  { href: "#phases", label: "Phases" },
-  { href: "#alpha", label: "Alpha" },
+  { href: "/#my-story", label: "My Story" },
+  { href: "/reva", label: "REVA" },
+  { href: "/#mrrru", label: "MRRRU" },
+  { href: "/#demo-platform", label: "Platform" },
+  { href: "/#phases", label: "Phases" },
+  { href: "/#pillars", label: "9 Pillars" },
+  { href: "/#alpha", label: "Alpha" },
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onChange = () => {
+      if (mq.matches) setOpen(false);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   return (
     <motion.header
@@ -22,8 +33,8 @@ export function Navbar() {
       transition={{ duration: 0.5 }}
       className="sticky top-0 z-50 border-b border-[rgba(201,168,76,0.12)] bg-[rgba(8,8,8,0.92)] backdrop-blur-xl"
     >
-      <div className="container-main flex h-[60px] items-center justify-between">
-        <a href="#" className="flex items-center gap-2.5">
+      <div className="container-main flex h-[60px] items-center justify-between gap-4">
+        <a href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
             src="/images/metaboliq-icon.png"
             alt=""
@@ -37,44 +48,55 @@ export function Navbar() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-4 lg:flex xl:gap-6" aria-label="Main">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-[#c8bfa8] transition hover:text-[#f5f0e8]"
+              className="whitespace-nowrap text-sm text-text-secondary transition hover:text-text-primary"
             >
               {link.label}
             </a>
           ))}
-          <a href="#alpha" className="badge badge-gold">
+          <a href="/#alpha" className="badge badge-gold shrink-0 whitespace-nowrap">
             Alpha · Coming Soon
           </a>
         </nav>
 
         <button
           type="button"
-          className="btn-ghost px-3 py-2 text-sm md:hidden"
+          className="btn-ghost inline-flex shrink-0 px-3 py-2 text-sm lg:hidden"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
         >
           {open ? "✕" : "☰"}
         </button>
       </div>
 
       {open && (
-        <div className="container-main border-t border-[rgba(201,168,76,0.12)] pb-4 md:hidden">
+        <nav
+          className="container-main border-t border-[rgba(201,168,76,0.12)] pb-4 lg:hidden"
+          aria-label="Mobile"
+        >
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="block py-2 text-sm text-[#c8bfa8]"
+              className="block py-2.5 text-sm text-text-secondary"
             >
               {link.label}
             </a>
           ))}
-        </div>
+          <a
+            href="/#alpha"
+            onClick={() => setOpen(false)}
+            className="badge badge-gold mt-2 inline-flex"
+          >
+            Alpha · Coming Soon
+          </a>
+        </nav>
       )}
     </motion.header>
   );

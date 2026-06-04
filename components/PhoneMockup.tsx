@@ -16,7 +16,7 @@ export function PhoneMockup() {
           {["Glucose Insights", "Stress Recovery", "Sleep Rhythm", "Metabolic Score"].map(
             (item) => (
               <div key={item} className="glass rounded-2xl p-3">
-                <p className="text-sm text-[#c8bfa8]">{item}</p>
+                <p className="text-sm text-text-secondary">{item}</p>
                 <div className="mt-2 h-2 rounded-full bg-[#262626]">
                   <div className="h-2 w-2/3 rounded-full bg-gradient-to-r from-[#e8c76a] to-[#c9a84c]" />
                 </div>

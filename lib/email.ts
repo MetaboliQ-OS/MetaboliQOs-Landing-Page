@@ -1,5 +1,8 @@
 import { Resend } from "resend";
 import { getEnv, isEmailConfigured } from "@/lib/env";
+import { absoluteUrl } from "@/lib/site";
+
+const WEEKLY_EMAIL_COOLDOWN_DAYS = 7;
 
 function getResendClient() {
   if (!isEmailConfigured()) {
@@ -59,6 +62,79 @@ MetaboliQ OS Team`,
       </div>
     `,
   });
+}
+
+/** True when a user should receive the cron weekly blast (not right after welcome). */
+export function isEligibleForWeeklyEmail(welcomeEmailSentAt: Date | null): boolean {
+  if (!welcomeEmailSentAt) return true;
+  const cooldownMs = WEEKLY_EMAIL_COOLDOWN_DAYS * 24 * 60 * 60 * 1000;
+  return Date.now() - welcomeEmailSentAt.getTime() >= cooldownMs;
+}
+
+/**
+ * Sent once when someone verifies and joins the founding waitlist.
+ */
+export async function sendWelcomeEmail(to: string) {
+  const { subject, text, html } = welcomeEmailContent();
+  await sendEmail({ to, subject, text, html });
+}
+
+function welcomeEmailContent() {
+  const siteUrl = absoluteUrl("/");
+  const revaUrl = absoluteUrl("/reva");
+
+  const subject = "Welcome to MetaboliQ OS — You're on the founding list";
+
+  const text = `Hello,
+
+You're in. Thank you for verifying and joining the MetaboliQ OS founding waitlist.
+
+What happens next:
+- You're on the list for private alpha access as modules open up.
+- I'll email you with weekly journey updates — real data, experiments, and build progress.
+- Explore what we're building: ${siteUrl}
+
+REVA AI overview: ${revaUrl}
+
+I'm building this in public from my own metabolic transformation — documented daily, no shortcuts.
+
+Glad you're here,
+Mru Patel — MetaboliQ OS
+
+You're receiving this because you verified your email on the MetaboliQ OS waitlist.`;
+
+  const html = `
+    <div style="font-family: Arial, sans-serif; color: #1a1a1a; max-width: 560px; margin: 0 auto;">
+      <h2 style="color: #c9a84c; margin-bottom: 4px;">Welcome to MetaboliQ OS</h2>
+      <p>Hello,</p>
+      <p>
+        <strong>You're in.</strong> Thank you for verifying and joining the founding waitlist.
+      </p>
+      <p style="margin: 16px 0 8px; font-weight: bold;">What happens next</p>
+      <ul style="padding-left: 20px; line-height: 1.6;">
+        <li>You're on the list for private alpha access as modules open up.</li>
+        <li>You'll receive <strong>weekly journey updates</strong> — real data, experiments, and build progress.</li>
+        <li>Explore the platform preview on the site.</li>
+      </ul>
+      <p style="margin: 24px 0;">
+        <a href="${siteUrl}" style="display: inline-block; padding: 12px 20px; background: #c9a84c; color: #080808; text-decoration: none; font-weight: bold; border-radius: 6px;">Visit MetaboliQ OS</a>
+      </p>
+      <p style="font-size: 14px;">
+        <a href="${revaUrl}" style="color: #4a9ee8;">Learn about REVA AI →</a>
+      </p>
+      <p>
+        I'm building this in public from my own metabolic transformation — documented daily,
+        no shortcuts.
+      </p>
+      <p style="margin-top: 24px;">Glad you're here,<br /><strong>Mru Patel — MetaboliQ OS</strong></p>
+      <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 24px 0;" />
+      <p style="font-size: 12px; color: #888;">
+        You're receiving this because you verified your email on the MetaboliQ OS waitlist.
+      </p>
+    </div>
+  `;
+
+  return { subject, text, html };
 }
 
 /**

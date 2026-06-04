@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { apiError, apiSuccess } from "@/lib/api";
 import { getEnv, isEmailConfigured } from "@/lib/env";
-import { sendWeeklyUpdateEmail } from "@/lib/email";
+import { isEligibleForWeeklyEmail, sendWeeklyUpdateEmail } from "@/lib/email";
 
 export const dynamic = "force-dynamic";
 
@@ -28,14 +28,19 @@ async function runWeeklyJob(request: NextRequest) {
 
   const users = await prisma.waitlistUser.findMany({
     where: { verified: true },
-    select: { email: true },
+    select: { email: true, welcomeEmailSentAt: true },
   });
+
+  const eligible = users.filter((user) =>
+    isEligibleForWeeklyEmail(user.welcomeEmailSentAt),
+  );
+  const skippedRecentWelcome = users.length - eligible.length;
 
   let sent = 0;
   const failed: string[] = [];
 
   // Sequential send keeps us well under provider rate limits for an alpha list.
-  for (const user of users) {
+  for (const user of eligible) {
     try {
       await sendWeeklyUpdateEmail(user.email);
       sent += 1;
@@ -47,6 +52,8 @@ async function runWeeklyJob(request: NextRequest) {
 
   return apiSuccess("Weekly update dispatched.", 200, {
     recipients: users.length,
+    eligible: eligible.length,
+    skippedRecentWelcome,
     sent,
     failed: failed.length,
   });

@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { apiError, apiSuccess } from "@/lib/api";
+import { sendWelcomeEmail } from "@/lib/email";
+import { isEmailConfigured } from "@/lib/env";
 import { verifyOtpSchema } from "@/lib/validations";
 
 export async function POST(request: NextRequest) {
@@ -28,6 +30,22 @@ export async function POST(request: NextRequest) {
       where: { email },
       data: { verified: true, otp: null, otpExpiry: null },
     });
+
+    if (isEmailConfigured()) {
+      try {
+        await sendWelcomeEmail(email);
+        await prisma.waitlistUser.update({
+          where: { email },
+          data: { welcomeEmailSentAt: new Date() },
+        });
+      } catch (welcomeError) {
+        console.error("welcome email failed for", email, welcomeError);
+        return apiError(
+          "You're verified, but we couldn't send your welcome email. Please contact support or try again later.",
+          502,
+        );
+      }
+    }
 
     return apiSuccess("Email verified successfully.", 200, { verified: true });
   } catch (error) {

@@ -33,25 +33,26 @@ function CgmCurve() {
             <stop offset="100%" stopColor="#7dcea0" />
           </linearGradient>
         </defs>
-        {/* stable glucose curve — dips then flat */}
+        {/* downward trend: early spike → deep trough → lower rebound → settles down (not lifted at end) */}
         <path
-          d="M 0 72 C 40 68, 55 58, 80 52 S 120 48, 150 50 S 200 54, 240 48 S 290 46, 320 44"
+          d="M 0 54 C 32 22, 58 20, 90 28 S 120 78, 152 72 S 192 46, 232 48 S 272 58, 320 64"
           fill="none"
           stroke="url(#cgmLine)"
-          strokeWidth="3"
+          strokeWidth="3.5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeDasharray="6 4"
+          strokeDasharray="7 5"
           filter="drop-shadow(0 0 6px rgba(76,175,125,0.55))"
         />
         <path
-          d="M 0 72 C 40 68, 55 58, 80 52 S 120 48, 150 50 S 200 54, 240 48 S 290 46, 320 44"
+          d="M 0 54 C 32 22, 58 20, 90 28 S 120 78, 152 72 S 192 46, 232 48 S 272 58, 320 64"
           fill="none"
           stroke="rgba(125,206,160,0.5)"
-          strokeWidth="6"
+          strokeWidth="7"
           strokeLinecap="round"
           opacity="0.35"
         />
+        <circle cx="320" cy="64" r="4.5" fill="#7dcea0" opacity="0.95" />
       </svg>
     </div>
   );

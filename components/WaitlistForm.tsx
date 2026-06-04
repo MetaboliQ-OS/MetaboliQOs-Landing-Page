@@ -255,7 +255,8 @@ export function WaitlistForm() {
               Your email <span className="text-text-primary">{email}</span> has been verified and
               saved.
               <br />
-              Check your inbox for a welcome email — then weekly journey updates from here on.
+              Check your inbox for a welcome email. From now on you&apos;ll receive emails and
+              weekly updates from me.
               <br />
               We will notify you as soon as beta access becomes available.
             </p>

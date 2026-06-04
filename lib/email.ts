@@ -89,11 +89,14 @@ function welcomeEmailContent() {
 
 You're in. Thank you for verifying and joining the MetaboliQ OS founding waitlist.
 
-What happens next:
-- You're on the list for private alpha access as modules open up.
-- I'll email you with weekly journey updates — real data, experiments, and build progress.
-- Explore what we're building: ${siteUrl}
+From now on, you will be receiving emails from me — including weekly updates on the journey, the data, and what's being built in alpha.
 
+What to expect:
+- Weekly update emails with real progress, experiments, and platform news
+- Occasional emails when something important ships or alpha access opens
+- You're on the founding list for private alpha as modules go live
+
+Explore what we're building: ${siteUrl}
 REVA AI overview: ${revaUrl}
 
 I'm building this in public from my own metabolic transformation — documented daily, no shortcuts.
@@ -110,11 +113,15 @@ You're receiving this because you verified your email on the MetaboliQ OS waitli
       <p>
         <strong>You're in.</strong> Thank you for verifying and joining the founding waitlist.
       </p>
-      <p style="margin: 16px 0 8px; font-weight: bold;">What happens next</p>
+      <p style="margin: 20px 0; padding: 16px 18px; background: #f7f3e8; border-left: 4px solid #c9a84c; line-height: 1.6;">
+        <strong>From now on, you will be receiving emails from me</strong> — including
+        <strong> weekly updates</strong> on the journey, the data, and what's being built in alpha.
+      </p>
+      <p style="margin: 16px 0 8px; font-weight: bold;">What to expect</p>
       <ul style="padding-left: 20px; line-height: 1.6;">
-        <li>You're on the list for private alpha access as modules open up.</li>
-        <li>You'll receive <strong>weekly journey updates</strong> — real data, experiments, and build progress.</li>
-        <li>Explore the platform preview on the site.</li>
+        <li><strong>Weekly update emails</strong> — real progress, experiments, and platform news</li>
+        <li>Occasional emails when something important ships or alpha access opens</li>
+        <li>You're on the founding list for private alpha as modules go live</li>
       </ul>
       <p style="margin: 24px 0;">
         <a href="${siteUrl}" style="display: inline-block; padding: 12px 20px; background: #c9a84c; color: #080808; text-decoration: none; font-weight: bold; border-radius: 6px;">Visit MetaboliQ OS</a>

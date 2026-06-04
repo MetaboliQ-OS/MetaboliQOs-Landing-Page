@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { apiError, apiSuccess } from "@/lib/api";
-import { getEnv, isSmtpConfigured } from "@/lib/env";
+import { getEnv, isEmailConfigured } from "@/lib/env";
 import { sendWeeklyUpdateEmail } from "@/lib/email";
 
 export const dynamic = "force-dynamic";
@@ -22,7 +22,7 @@ async function runWeeklyJob(request: NextRequest) {
   if (!isAuthorized(request, CRON_SECRET)) {
     return apiError("Unauthorized.", 401);
   }
-  if (!isSmtpConfigured()) {
+  if (!isEmailConfigured()) {
     return apiError("Email service is not configured.", 503);
   }
 

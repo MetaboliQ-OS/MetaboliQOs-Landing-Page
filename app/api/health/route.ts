@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { isSmtpConfigured } from "@/lib/env";
+import { isEmailConfigured } from "@/lib/env";
 
 export async function GET() {
   let database: "ok" | "error" = "ok";
@@ -18,7 +18,7 @@ export async function GET() {
       status,
       service: "metaboliq-os",
       database,
-      smtp: isSmtpConfigured() ? "configured" : "pending",
+      email: isEmailConfigured() ? "configured" : "pending",
       timestamp: new Date().toISOString(),
     },
     { status: status === "ok" ? 200 : 503 },

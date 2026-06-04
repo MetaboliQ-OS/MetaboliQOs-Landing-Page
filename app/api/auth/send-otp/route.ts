@@ -8,7 +8,7 @@ import {
   getOtpExpiryDate,
 } from "@/lib/otp";
 import { sendOtpEmail } from "@/lib/email";
-import { isSmtpConfigured } from "@/lib/env";
+import { isEmailConfigured } from "@/lib/env";
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,9 +21,9 @@ export async function POST(request: NextRequest) {
 
     const { email } = parsed.data;
 
-    if (!isSmtpConfigured()) {
+    if (!isEmailConfigured()) {
       return apiError(
-        "Email service is not configured yet. SMTP will be enabled on the next deploy.",
+        "Email service is not configured yet. Add Resend env vars on Railway.",
         503,
       );
     }

@@ -8,17 +8,28 @@ const baseSchema = z.object({
   CRON_SECRET: z.string().min(16).optional(),
 });
 
-const smtpSchema = z.object({
-  SMTP_HOST: z.string().min(1),
-  SMTP_PORT: z.coerce.number().int().positive().default(587),
-  SMTP_USER: z.string().min(1),
-  SMTP_PASS: z.string().min(1),
-  SMTP_FROM: z.string().min(1),
+/** Resend: `email@domain.com` or `Display Name <email@domain.com>` */
+const resendFromSchema = z
+  .string()
+  .min(1)
+  .refine(
+    (value) =>
+      /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(value) ||
+      /^.+<[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+>$/.test(value.trim()),
+    {
+      message:
+        'RESEND_FROM must be email@yourdomain.com or Name <email@yourdomain.com> (not a bare domain)',
+    },
+  );
+
+const resendSchema = z.object({
+  RESEND_API_KEY: z.string().min(1),
+  RESEND_FROM: resendFromSchema,
 });
 
 export type AppEnv = z.infer<typeof baseSchema> &
-  z.infer<typeof smtpSchema> & {
-    smtpConfigured: boolean;
+  z.infer<typeof resendSchema> & {
+    emailConfigured: boolean;
   };
 
 let cachedEnv: AppEnv | null = null;
@@ -34,34 +45,25 @@ export function getEnv(): AppEnv {
     CRON_SECRET: process.env.CRON_SECRET,
   });
 
-  const smtpValues = {
-    SMTP_HOST: process.env.SMTP_HOST,
-    SMTP_PORT: process.env.SMTP_PORT ?? 587,
-    SMTP_USER: process.env.SMTP_USER,
-    SMTP_PASS: process.env.SMTP_PASS,
-    SMTP_FROM: process.env.SMTP_FROM,
+  const resendValues = {
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
+    RESEND_FROM: process.env.RESEND_FROM,
   };
 
-  const smtpConfigured =
-    Boolean(smtpValues.SMTP_HOST) &&
-    Boolean(smtpValues.SMTP_USER) &&
-    Boolean(smtpValues.SMTP_PASS) &&
-    Boolean(smtpValues.SMTP_FROM);
+  const emailConfigured =
+    Boolean(resendValues.RESEND_API_KEY) && Boolean(resendValues.RESEND_FROM);
 
-  const smtp = smtpConfigured
-    ? smtpSchema.parse(smtpValues)
+  const resend = emailConfigured
+    ? resendSchema.parse(resendValues)
     : {
-        SMTP_HOST: "",
-        SMTP_PORT: 587,
-        SMTP_USER: "",
-        SMTP_PASS: "",
-        SMTP_FROM: "",
+        RESEND_API_KEY: "",
+        RESEND_FROM: "",
       };
 
-  cachedEnv = { ...base, ...smtp, smtpConfigured };
+  cachedEnv = { ...base, ...resend, emailConfigured };
   return cachedEnv;
 }
 
-export function isSmtpConfigured() {
-  return getEnv().smtpConfigured;
+export function isEmailConfigured() {
+  return getEnv().emailConfigured;
 }

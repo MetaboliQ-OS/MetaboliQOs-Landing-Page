@@ -1,33 +1,18 @@
-import nodemailer from "nodemailer";
-import { getEnv, isSmtpConfigured } from "@/lib/env";
+import { Resend } from "resend";
+import { getEnv, isEmailConfigured } from "@/lib/env";
 
-function getTransporter() {
-  if (!isSmtpConfigured()) {
-    throw new Error("SMTP_NOT_CONFIGURED");
+function getResendClient() {
+  if (!isEmailConfigured()) {
+    throw new Error("EMAIL_NOT_CONFIGURED");
   }
 
-  const env = getEnv();
-
-  return nodemailer.createTransport({
-    host: env.SMTP_HOST,
-    port: env.SMTP_PORT,
-    secure: env.SMTP_PORT === 465,
-    requireTLS: env.SMTP_PORT !== 465,
-    auth: {
-      user: env.SMTP_USER,
-      pass: env.SMTP_PASS,
-    },
-    // Fail fast instead of hanging when a host blocks outbound SMTP.
-    connectionTimeout: 10_000,
-    greetingTimeout: 10_000,
-    socketTimeout: 15_000,
-  });
+  const { RESEND_API_KEY } = getEnv();
+  return new Resend(RESEND_API_KEY);
 }
 
 /**
- * Single place that actually delivers mail. When we swap SMTP for an
- * HTTP provider (e.g. Resend), only this function changes — every caller
- * (OTP, weekly update, future emails) keeps working unchanged.
+ * Single place that actually delivers mail. Callers (OTP, weekly update, etc.)
+ * stay unchanged when the provider changes.
  */
 async function sendEmail(opts: {
   to: string;
@@ -35,16 +20,20 @@ async function sendEmail(opts: {
   text: string;
   html: string;
 }) {
-  const transporter = getTransporter();
-  const env = getEnv();
+  const resend = getResendClient();
+  const { RESEND_FROM } = getEnv();
 
-  await transporter.sendMail({
-    from: env.SMTP_FROM,
+  const { error } = await resend.emails.send({
+    from: RESEND_FROM,
     to: opts.to,
     subject: opts.subject,
     text: opts.text,
     html: opts.html,
   });
+
+  if (error) {
+    throw new Error(error.message);
+  }
 }
 
 export async function sendOtpEmail(to: string, otp: string) {

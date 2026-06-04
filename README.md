@@ -8,7 +8,7 @@ Premium black-gold Next.js 15 landing application with OTP waitlist verification
 - Tailwind CSS + Framer Motion
 - React Hook Form + Zod
 - Prisma + PostgreSQL (Railway)
-- Nodemailer (SMTP) for OTP emails
+- Resend (HTTP API) for OTP and weekly emails
 - Render deployment (Railway PostgreSQL)
 
 ## Features
@@ -48,7 +48,7 @@ cp .env.example .env
 2. Fill these values in `.env`:
 
 - `DATABASE_URL` (Railway PostgreSQL connection string)
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`
+- `RESEND_API_KEY`, `RESEND_FROM` (verified domain in [Resend](https://resend.com))
 - `ADMIN_SECRET` (to view waitlist at `/admin`)
 
 ## Database (Railway PostgreSQL)
@@ -127,7 +127,7 @@ Response:
 4. Set secret env vars when prompted:
    - `DATABASE_URL` (Railway PostgreSQL URL)
    - `ADMIN_SECRET`
-   - `SMTP_*` (optional until email is enabled)
+   - `RESEND_API_KEY`, `RESEND_FROM` (optional until email is enabled)
 5. Deploy.
 
 ### Option B — Manual Web Service

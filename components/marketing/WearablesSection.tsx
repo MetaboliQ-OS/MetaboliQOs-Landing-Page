@@ -91,7 +91,7 @@ export function WearablesSection() {
             Full real-time connections via Oura API, Whoop API, Garmin Connect IQ, Apple HealthKit,
             and Google Health Connect go live in Phase 2. No manual export steps.
           </p>
-          <a href="#alpha" className="btn-gold mt-4 inline-flex text-sm">
+          <a href="#waitlist" className="btn-gold mt-4 inline-flex text-sm">
             Join Beta — Early Access
           </a>
         </div>

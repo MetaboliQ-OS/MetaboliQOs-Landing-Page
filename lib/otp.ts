@@ -12,28 +12,32 @@ export function getOtpExpiryDate() {
 const ONE_HOUR_MS = 60 * 60 * 1000;
 
 export async function checkAndIncrementOtpRateLimit(email: string) {
-  const user = await prisma.waitlistUser.findUnique({ where: { email } });
+  const pending = await prisma.pendingSignup.findUnique({ where: { email } });
   const now = new Date();
 
-  if (!user) {
+  if (!pending) {
     return { allowed: true, otpSendCount: 1, otpWindowStart: now };
   }
 
   const windowExpired =
-    !user.otpWindowStart ||
-    now.getTime() - user.otpWindowStart.getTime() >= ONE_HOUR_MS;
+    !pending.otpWindowStart ||
+    now.getTime() - pending.otpWindowStart.getTime() >= ONE_HOUR_MS;
 
   if (windowExpired) {
     return { allowed: true, otpSendCount: 1, otpWindowStart: now };
   }
 
-  if (user.otpSendCount >= getEnv().OTP_MAX_REQUESTS_PER_HOUR) {
-    return { allowed: false, otpSendCount: user.otpSendCount, otpWindowStart: user.otpWindowStart };
+  if (pending.otpSendCount >= getEnv().OTP_MAX_REQUESTS_PER_HOUR) {
+    return {
+      allowed: false,
+      otpSendCount: pending.otpSendCount,
+      otpWindowStart: pending.otpWindowStart,
+    };
   }
 
   return {
     allowed: true,
-    otpSendCount: user.otpSendCount + 1,
-    otpWindowStart: user.otpWindowStart,
+    otpSendCount: pending.otpSendCount + 1,
+    otpWindowStart: pending.otpWindowStart,
   };
 }

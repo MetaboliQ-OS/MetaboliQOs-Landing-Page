@@ -42,9 +42,9 @@ export function FounderStory() {
               className="text-lg leading-snug text-[#e8c76a]"
               style={{ fontFamily: "var(--font-head)" }}
             >
-              Looking for the right 50 founding members only
+              Founding members get VIP priority access
             </p>
-            <a href="#alpha" className="btn-ghost mt-4 w-fit text-sm">
+            <a href="#founding" className="btn-ghost mt-4 w-fit text-sm">
               Join the founding list →
             </a>
           </div>
@@ -180,14 +180,14 @@ export function FounderStory() {
                 className="text-[clamp(1.15rem,2.5vw,1.45rem)] leading-snug text-[#e8c76a]"
                 style={{ fontFamily: "var(--font-head)" }}
               >
-                Looking for the right 50 founding members only
+                Founding members get VIP priority access
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-text-secondary">
                 First come, first served. Beta testers get founding member pricing locked for life
                 and direct access to me — not a mass launch.
               </p>
               <a
-                href="#alpha"
+                href="#founding"
                 className="btn-gold mt-4 inline-flex text-sm"
               >
                 Secure your spot →

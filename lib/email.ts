@@ -72,29 +72,38 @@ export function isEligibleForWeeklyEmail(welcomeEmailSentAt: Date | null): boole
 }
 
 /**
- * Sent once when someone verifies and joins the founding waitlist.
+ * Sent once when someone verifies and joins the waitlist.
  */
-export async function sendWelcomeEmail(to: string) {
-  const { subject, text, html } = welcomeEmailContent();
+export async function sendWelcomeEmail(to: string, isVip: boolean) {
+  const { subject, text, html } = welcomeEmailContent(isVip);
   await sendEmail({ to, subject, text, html });
 }
 
-function welcomeEmailContent() {
+function welcomeEmailContent(isVip: boolean) {
   const siteUrl = absoluteUrl("/");
   const revaUrl = absoluteUrl("/reva");
 
-  const subject = "Welcome to MetaboliQ OS — You're on the founding list";
+  const subject = isVip
+    ? "Welcome to MetaboliQ OS — VIP founding member"
+    : "Welcome to MetaboliQ OS — You're on the beta waitlist";
+
+  const listLabel = isVip
+    ? "waitlist as a VIP founding member"
+    : "beta waitlist";
+  const accessLine = isVip
+    ? "- You're a VIP founding member with early access as modules go live"
+    : "- You'll be notified as soon as beta access becomes available";
 
   const text = `Hello,
 
-You're in. Thank you for verifying and joining the MetaboliQ OS founding waitlist.
+You're in. Thank you for verifying and joining the MetaboliQ OS ${listLabel}.
 
 From now on, you will be receiving emails from me — including weekly updates on the journey, the data, and what's being built in alpha.
 
 What to expect:
 - Weekly update emails with real progress, experiments, and platform news
 - Occasional emails when something important ships or alpha access opens
-- You're on the founding list for private alpha as modules go live
+${accessLine}
 
 Explore what we're building: ${siteUrl}
 REVA AI overview: ${revaUrl}
@@ -111,7 +120,7 @@ You're receiving this because you verified your email on the MetaboliQ OS waitli
       <h2 style="color: #c9a84c; margin-bottom: 4px;">Welcome to MetaboliQ OS</h2>
       <p>Hello,</p>
       <p>
-        <strong>You're in.</strong> Thank you for verifying and joining the founding waitlist.
+        <strong>You're in.</strong> Thank you for verifying and joining the ${listLabel}.
       </p>
       <p style="margin: 20px 0; padding: 16px 18px; background: #f7f3e8; border-left: 4px solid #c9a84c; line-height: 1.6;">
         <strong>From now on, you will be receiving emails from me</strong> — including
@@ -121,7 +130,7 @@ You're receiving this because you verified your email on the MetaboliQ OS waitli
       <ul style="padding-left: 20px; line-height: 1.6;">
         <li><strong>Weekly update emails</strong> — real progress, experiments, and platform news</li>
         <li>Occasional emails when something important ships or alpha access opens</li>
-        <li>You're on the founding list for private alpha as modules go live</li>
+        <li>${accessLine.replace(/^- /, "")}</li>
       </ul>
       <p style="margin: 24px 0;">
         <a href="${siteUrl}" style="display: inline-block; padding: 12px 20px; background: #c9a84c; color: #080808; text-decoration: none; font-weight: bold; border-radius: 6px;">Visit MetaboliQ OS</a>

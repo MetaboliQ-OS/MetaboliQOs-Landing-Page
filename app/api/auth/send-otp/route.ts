@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { apiError, apiSuccess } from "@/lib/api";
-import { emailSchema } from "@/lib/validations";
+import { betaApplicationSchema, normalizeApplicationData } from "@/lib/validations";
 import {
   checkAndIncrementOtpRateLimit,
   generateOtp,
@@ -10,28 +10,58 @@ import {
 import { sendOtpEmail } from "@/lib/email";
 import { isEmailConfigured } from "@/lib/env";
 
+async function nextFounderNumber() {
+  const vipCount = await prisma.waitlistUser.count({
+    where: { isVip: true },
+  });
+  return vipCount + 1;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const parsed = emailSchema.safeParse(body);
+    const parsed = betaApplicationSchema.safeParse(body);
 
     if (!parsed.success) {
-      return apiError(parsed.error.issues[0]?.message ?? "Invalid email.", 422);
+      return apiError(parsed.error.issues[0]?.message ?? "Invalid application.", 422);
     }
 
-    const { email } = parsed.data;
+    const application = normalizeApplicationData(parsed.data);
+    const { email, isVip: wantsVip, ...profile } = application;
 
     if (!isEmailConfigured()) {
       return apiError(
-        "Email service is not configured yet. Add Resend env vars on Railway.",
+        "Email service is not configured. Add RESEND_API_KEY and RESEND_FROM to your .env file.",
         503,
       );
     }
 
-    const existing = await prisma.waitlistUser.findUnique({ where: { email } });
+    const registered = await prisma.waitlistUser.findUnique({ where: { email } });
 
-    if (existing?.verified) {
-      return apiError("This email is already on the waitlist.", 409);
+    if (registered) {
+      if (wantsVip) {
+        if (registered.isVip) {
+          return apiError("This email is already registered as a VIP founding member.", 409);
+        }
+
+        const founderNumber = await nextFounderNumber();
+        await prisma.waitlistUser.update({
+          where: { email },
+          data: { isVip: true, founderNumber, ...profile },
+        });
+
+        return apiSuccess(
+          `You're already registered — upgraded to VIP founding member #${founderNumber}.`,
+          200,
+          { upgraded: true, isVip: true, founderNumber },
+        );
+      }
+
+      if (registered.isVip) {
+        return apiError("This email is already registered as a VIP founding member.", 409);
+      }
+
+      return apiError("This email is already registered on the beta waitlist.", 409);
     }
 
     const rateLimit = await checkAndIncrementOtpRateLimit(email);
@@ -43,18 +73,21 @@ export async function POST(request: NextRequest) {
     const otpExpiry = getOtpExpiryDate();
     const otpCreatedAt = new Date();
 
-    await prisma.waitlistUser.upsert({
+    await prisma.pendingSignup.upsert({
       where: { email },
       create: {
         email,
+        ...profile,
+        isVip: wantsVip,
         otp,
         otpExpiry,
         otpCreatedAt,
-        verified: false,
         otpSendCount: rateLimit.otpSendCount,
         otpWindowStart: rateLimit.otpWindowStart,
       },
       update: {
+        ...profile,
+        isVip: wantsVip,
         otp,
         otpExpiry,
         otpCreatedAt,

@@ -70,7 +70,7 @@ export function DecisionCockpitSection() {
               <a href="/reva" className="btn-gold text-sm">
                 Run REVA Example
               </a>
-              <a href="#alpha" className="btn-ghost text-sm">
+              <a href="#waitlist" className="btn-ghost text-sm">
                 Email Demo Summary
               </a>
             </div>

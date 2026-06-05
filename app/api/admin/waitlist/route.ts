@@ -17,13 +17,25 @@ export async function GET(request: NextRequest) {
       select: {
         id: true,
         email: true,
+        firstName: true,
+        lastName: true,
+        country: true,
+        primaryInterest: true,
+        whatBringsYouHere: true,
+        isVip: true,
+        founderNumber: true,
         verified: true,
         createdAt: true,
       },
     });
 
+    const vipMembers = users.filter((user) => user.isVip);
+    const betaWaitlist = users.filter((user) => !user.isVip);
+
     return apiSuccess("Waitlist fetched.", 200, {
       total: users.length,
+      vip: vipMembers.length,
+      betaWaitlist: betaWaitlist.length,
       users,
     });
   } catch (error) {

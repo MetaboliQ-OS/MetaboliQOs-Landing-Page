@@ -224,7 +224,7 @@ export function RevaPageContent() {
           founding list for early access.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
-          <Link href="/#alpha" className="btn-gold">
+          <Link href="/#founding" className="btn-gold">
             Join founding waitlist →
           </Link>
           <Link href="/#demo-platform" className="btn-ghost">

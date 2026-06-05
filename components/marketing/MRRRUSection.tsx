@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { mrrruLetters } from "@/lib/marketing-content";
 
 export function MRRRUSection() {
@@ -10,13 +10,13 @@ export function MRRRUSection() {
         <div className="glass overflow-hidden rounded-3xl border border-[rgba(201,168,76,0.2)] p-6 md:p-8 lg:p-10">
           <div className="mb-6 md:mb-8">
             <h2 className="text-[clamp(1.8rem,3.5vw,2.6rem)] leading-tight">
-              Why <span className="gold-text">MRRRU</span>?
+              <span className="gold-text">MRRRU</span> Is My Battle Cry For Rebuilding Health
             </h2>
             <div className="gold-line mb-0" />
           </div>
 
           <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-10">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -25,7 +25,7 @@ export function MRRRUSection() {
               {mrrruLetters.map((item) => (
                 <div
                   key={item.letter + item.title}
-                  className="card-hover flex min-h-[118px] flex-col items-center justify-center rounded-xl border border-[rgba(201,168,76,0.18)] bg-[#111111] px-1.5 py-3 text-center sm:min-h-[132px] sm:rounded-2xl sm:px-2 sm:py-4"
+                  className="card-hover flex min-h-[128px] flex-col items-center justify-center rounded-xl border border-[rgba(201,168,76,0.18)] bg-[#111111] px-1 py-3 text-center sm:min-h-[148px] sm:rounded-2xl sm:px-1.5 sm:py-4"
                 >
                   <div
                     className="text-[2rem] font-black leading-none sm:text-[2.35rem]"
@@ -41,9 +41,9 @@ export function MRRRUSection() {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -51,12 +51,9 @@ export function MRRRUSection() {
               className="space-y-4"
             >
               <p className="text-[0.98rem] leading-relaxed text-text-secondary md:text-base">
-                Over 1,500 experiments and case studies journal for the MRRRU system developed.
-                MRRRU is more than a framework acronym — it is my personal motivational call.
-                During the hardest moments — a workout when every muscle screams to stop, a craving
-                that would break the protocol, a social moment where everyone else orders freely — I
-                say it out loud: <strong className="text-[#c9a84c]">MRRRU.</strong> Each letter is
-                a reminder of what you are doing and why.
+                MRRRU is the word I used when the craving hit, when the workout was hard, when
+                everyone else was eating freely, and when my old habits tried to pull me back. It
+                reminded me why I started.
               </p>
               <blockquote className="rounded-2xl border border-[rgba(201,168,76,0.15)] border-l-[3px] border-l-[#c9a84c] bg-[rgba(0,0,0,0.35)] px-4 py-4 italic leading-relaxed text-text-secondary sm:px-5 sm:py-5">
                 &ldquo;When the craving hits at 11pm. When you&apos;re staring at bread at dinner.
@@ -68,11 +65,9 @@ export function MRRRUSection() {
                 </footer>
               </blockquote>
               <p className="text-sm leading-relaxed text-text-muted">
-                The roar is not aggression. It is a commitment signal — the moment you choose data
-                over desire, protocol over impulse, longevity over immediate gratification. MRRRU
-                is the sound of a system winning over its own damage.
+                MRRRU is not just a framework. It is the moment you choose data over desire.
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </div>

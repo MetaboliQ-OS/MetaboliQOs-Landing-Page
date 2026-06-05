@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import {
   JourneyMarkerTimeline,
@@ -22,38 +22,38 @@ export function AlphaComingSoon() {
         }}
       >
         <div className="container-main">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mx-auto max-w-2xl text-center"
           >
-            <span className="badge badge-gold mb-4">Private Alpha</span>
+            <span className="badge badge-gold mb-4">Private Beta</span>
             <h2
               className="mb-4 text-[clamp(2rem,4vw,3rem)] italic text-[#c9a84c]"
               style={{ fontFamily: "var(--font-head)" }}
             >
-              Coming Soon
+              Join The Private Beta
             </h2>
             <p className="mx-auto mb-4 max-w-xl text-lg leading-relaxed text-text-secondary">
-              MetaboliQ OS is in active alpha — tested on my own biology, data-driven, and built in
-              public. The full platform (REVA, Food OS, CGM, Blood OS, Wearables, FaceScan &
-              Metabolic Memory) launches in phases.
+              MetaboliQ OS is being built in public from my own documented journey. Beta members
+              will help test the app, give feedback, shape the features, and get early access
+              before public launch.
             </p>
             <p className="mx-auto max-w-lg text-sm text-text-muted">
-              One application form for everyone. Choose <strong className="text-text-secondary">User</strong>{" "}
-              for beta waitlist or <strong className="text-[#e8c76a]">Founder</strong> for VIP
-              priority review.
+              Founding members get VIP priority, early pricing benefits and closer access to the
+              build journey. No payment today. No auto-charge. No data sold. You can unsubscribe
+              anytime.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a href="#founding" className="btn-gold">
-                Apply as Founder →
+              <a href="#waitlist" className="btn-gold">
+                Apply For Beta Access →
               </a>
-              <a href="#waitlist" className="btn-ghost">
-                Apply for Beta Access
+              <a href="#founding" className="btn-ghost border-[rgba(201,168,76,0.45)] text-[#c9a84c]">
+                Join As Founding Member
               </a>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -68,7 +68,7 @@ export function AlphaComingSoon() {
         <div id="waitlist" className="scroll-mt-24" aria-hidden />
 
         <div className="container-main">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -82,12 +82,12 @@ export function AlphaComingSoon() {
               Beta &amp; Founding Access
             </h2>
             <p className="text-sm leading-relaxed text-text-secondary">
-              Everyone joins the same waitlist. Founders are tagged VIP for priority review — you
-              decide who gets access first.
+              One application for everyone. Choose beta access or founding member — founders are
+              tagged VIP for priority review and early pricing benefits.
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -122,7 +122,7 @@ export function AlphaComingSoon() {
                 tone="after"
               />
             </div>
-          </motion.div>
+          </m.div>
 
           <div className="mt-8 xl:hidden">
             <JourneyMarkerTimeline />
@@ -133,7 +133,7 @@ export function AlphaComingSoon() {
               Read My Story
             </a>
             <a href="#demo-platform" className="btn-ghost">
-              See Platform Preview
+              See Your Daily Cockpit
             </a>
           </div>
           <p className="mt-8 text-center text-xs text-text-muted">

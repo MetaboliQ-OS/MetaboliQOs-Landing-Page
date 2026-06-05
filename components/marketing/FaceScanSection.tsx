@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   faceScanDisclaimer,
   faceScanFutureSignals,
@@ -17,9 +17,9 @@ export function FaceScanSection() {
     >
       <div className="container-main">
         <SectionHeading
-          badge="Phase 2 · Camera Wellness"
-          title="Face & Retina Scan — Camera Wellness Signals"
-          subtitle="Phase 2 capability: camera-based wellness signal estimation using remote photoplethysmography (rPPG). Estimates heart rate and respiration rate with confidence. HRV, stress and recovery are proxy indicators only — not diagnostic measurements."
+          badge="Wellness Scan"
+          title="60-Second Face & Retina Wellness Scan"
+          subtitle="Another signal to stop guessing about your day. A quick wellness scan for heart rate, breathing, stress proxy and recovery trends. This is not a diagnosis or a replacement for medical tests — it is context REVA uses to give you one clear next action. Where validated hardware and clinical partners are required, we will only activate those features with the right safety, consent and governance."
         />
 
         <div className="mb-8 rounded-xl border border-[rgba(232,151,58,0.25)] bg-[rgba(232,151,58,0.06)] p-4 text-sm leading-relaxed text-text-secondary">
@@ -30,7 +30,7 @@ export function FaceScanSection() {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -66,9 +66,9 @@ export function FaceScanSection() {
                 Stop
               </button>
             </div>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -94,7 +94,7 @@ export function FaceScanSection() {
               </div>
             </div>
             <p className="mb-6 text-xs text-text-muted">
-              Complete a Face & Retina Scan demo to get REVA wellness signal interpretation.
+              Complete a Face & Retina Scan to get your next action from REVA.
             </p>
             <div className="space-y-3">
               {faceScanFutureSignals.map((s) => (
@@ -117,7 +117,7 @@ export function FaceScanSection() {
               No scans completed yet. Complete your first Face & Retina Scan to begin trend
               tracking.
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

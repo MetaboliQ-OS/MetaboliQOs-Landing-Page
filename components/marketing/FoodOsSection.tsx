@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   cuisineOptions,
   foodOsMealPreview,
@@ -20,8 +20,8 @@ export function FoodOsSection() {
       <div className="container-main">
         <SectionHeading
           badge="Food Intelligence OS"
-          title="MetaboliQ Food OS"
-          subtitle="4 Continents · 90+ Countries · 3 Cookbooks · 800+ Recipes. The founder has lived and is passionate about cooking global cuisines from 90+ countries, authored 3 cookbooks with over 800+ pages of recipes — including a Dosha-based diet and recipe book. Every food recommendation is metabolically calibrated to your phase, markers and goals."
+          title="Food OS: Turn Any Meal Into A Smarter Metabolic Decision"
+          subtitle="Food is where most people win or lose their health every day. MetaboliQ Food OS helps you choose, adjust and sequence your meals based on your goals, glucose response, phase, culture and preferences. Take a photo. Scan a label. Type a meal. Choose your cuisine. Ask REVA what to do. REVA does not just count calories — it tells you what to eat first, what to reduce, what to pair, when to walk, and what to track after the meal. Built from my own food experiments, global cuisine research, and 800+ founder recipes across 90+ countries and 3 cookbooks."
         />
 
         <div className="mb-8 flex flex-wrap gap-2">
@@ -45,10 +45,16 @@ export function FoodOsSection() {
           <div className="grid gap-8 lg:grid-cols-2">
             <div className="glass rounded-2xl p-6">
               <h3 className="mb-4 text-lg text-[#c9a84c]">Configure Your Metabolic Meal</h3>
-              <label className="mb-1 block text-xs uppercase tracking-wider text-text-muted">
+              <label
+                htmlFor="food-os-mrrru-phase"
+                className="mb-1 block text-xs uppercase tracking-wider text-text-muted"
+              >
                 MRRRU Phase
               </label>
-              <select className="mb-4 w-full rounded-lg border border-[rgba(201,168,76,0.18)] bg-[#111] px-3 py-2 text-sm text-text-secondary">
+              <select
+                id="food-os-mrrru-phase"
+                className="mb-4 w-full rounded-lg border border-[rgba(201,168,76,0.18)] bg-[#111] px-3 py-2 text-sm text-text-secondary"
+              >
                 {foodOsPhases.map((p) => (
                   <option key={p}>{p}</option>
                 ))}
@@ -83,7 +89,7 @@ export function FoodOsSection() {
                 Generate Metabolic Meal Plan
               </button>
             </div>
-            <motion.article
+            <m.article
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               className="rounded-2xl border border-[rgba(201,168,76,0.25)] bg-[#141414] p-6"
@@ -109,7 +115,7 @@ export function FoodOsSection() {
               </div>
               <p className="text-xs leading-relaxed text-text-muted">{foodOsMealPreview.nutrition}</p>
               <p className="mt-3 text-xs text-text-secondary">{foodOsMealPreview.sequence}</p>
-            </motion.article>
+            </m.article>
           </div>
         )}
 
@@ -141,7 +147,7 @@ export function FoodOsSection() {
           <UploadPanel
             title="Voice Meal Log"
             desc="Say or type what you ate. REVA logs it to memory, scores the meal, flags glucose risk and gives a post-meal action within seconds."
-            placeholder="Type your meal description or use voice log (alpha)"
+            placeholder="Type your meal description or use voice log"
             cta="Log + Analyse with REVA"
           />
         )}
@@ -153,7 +159,7 @@ export function FoodOsSection() {
             </p>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {foodOsRecipeCategories.map((cat, i) => (
-                <motion.div
+                <m.div
                   key={cat.name}
                   initial={{ opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -163,7 +169,7 @@ export function FoodOsSection() {
                 >
                   <h4 className="mb-1 text-sm font-bold text-[#c9a84c]">{cat.name}</h4>
                   <p className="text-xs text-text-secondary">{cat.desc}</p>
-                </motion.div>
+                </m.div>
               ))}
             </div>
             <button type="button" className="btn-ghost mt-6 text-sm">
@@ -198,7 +204,11 @@ function UploadPanel({
       <div className="mb-4 flex min-h-[120px] items-center justify-center rounded-xl border-2 border-dashed border-[rgba(201,168,76,0.25)] bg-[#0a0a0a] px-4 text-center text-sm text-text-muted">
         {placeholder}
       </div>
+      <label htmlFor="food-os-notes" className="sr-only">
+        Your notes or context (optional)
+      </label>
       <textarea
+        id="food-os-notes"
         className="mb-4 w-full rounded-lg border border-[rgba(201,168,76,0.18)] bg-[#111] px-3 py-2 text-sm text-text-secondary outline-none"
         rows={3}
         placeholder="Your notes / context (optional)"
@@ -209,7 +219,7 @@ function UploadPanel({
         {cta}
       </button>
       <p className="mt-4 text-xs text-text-muted">
-        Upload or enter content to receive REVA metabolic analysis (alpha preview).
+        Upload or enter content — REVA will tell you what to do next.
       </p>
     </div>
   );

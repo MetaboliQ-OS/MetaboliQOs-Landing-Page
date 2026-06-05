@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { BioImpedanceReadings } from "@/components/marketing/BioImpedanceReadings";
 import { CgmMetabolicPanels } from "@/components/marketing/CgmMetabolicPanels";
 
@@ -32,9 +32,9 @@ export function FounderStory() {
             </div>
             <h3 className="mb-2 text-xl text-[#c9a84c]">My journey becomes the product</h3>
             <p className="text-sm text-text-secondary leading-relaxed">
-              My story feeds the MRRRU rules, FoodOS recipes, CGM experiments, bio-impedance scale
-              readings, behaviour loops, safety guardrails and Personal Metabolic Memory design in
-              MetaboliQ OS.
+              I measured everything — food, glucose, blood markers, sleep, stress and movement — and
+              turned what worked into the system you see here. Every feature in MetaboliQ OS started
+              as something I needed on my own turnaround.
             </p>
           </div>
           <div className="glass card-hover rounded-2xl p-5 flex flex-col justify-center">
@@ -45,12 +45,12 @@ export function FounderStory() {
               Founding members get VIP priority access
             </p>
             <a href="#founding" className="btn-ghost mt-4 w-fit text-sm">
-              Join the founding list →
+              Become a Founding Member →
             </a>
           </div>
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -73,12 +73,12 @@ export function FounderStory() {
             <figure className="flex min-w-0 flex-col">
               <div className="flex h-[260px] items-center justify-center overflow-hidden rounded-xl border border-[rgba(201,168,76,0.35)] bg-[#0a0a0a] sm:h-[300px] md:h-[340px]">
                 <Image
-                  src="/images/founder-before-after.png"
+                  src="/images/founder-before-after.jpg"
                   alt="Mru Patel before and after transformation — MetaboliQ OS coming soon poster"
                   width={1122}
                   height={1402}
                   className="max-h-full max-w-full object-contain object-center"
-                  priority
+                  loading="lazy"
                   sizes="(max-width: 768px) 44vw, 460px"
                 />
               </div>
@@ -123,10 +123,10 @@ export function FounderStory() {
             <strong className="text-text-secondary">8.3% → 5.3%</strong> · no GLP-1 ·
             clinician-supervised personal data. Not medical advice. Individual results vary.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -165,9 +165,9 @@ export function FounderStory() {
                 — Mru Patel, Creator of MetaboliQ OS
               </footer>
             </blockquote>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -175,7 +175,7 @@ export function FounderStory() {
             className="space-y-4"
           >
             <div className="rounded-2xl border border-[rgba(201,168,76,0.35)] bg-gradient-to-br from-[rgba(201,168,76,0.12)] to-[rgba(0,0,0,0.35)] p-5">
-              <span className="badge badge-amber mb-3">Private beta</span>
+              <span className="badge badge-amber mb-3">Join early</span>
               <h3
                 className="text-[clamp(1.15rem,2.5vw,1.45rem)] leading-snug text-[#e8c76a]"
                 style={{ fontFamily: "var(--font-head)" }}
@@ -183,14 +183,14 @@ export function FounderStory() {
                 Founding members get VIP priority access
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-                First come, first served. Beta testers get founding member pricing locked for life
-                and direct access to me — not a mass launch.
+                Stop guessing with your health. Join the private beta, help shape the product, and
+                get founding member pricing — curated, not mass launch.
               </p>
               <a
-                href="#founding"
+                href="#waitlist"
                 className="btn-gold mt-4 inline-flex text-sm"
               >
-                Secure your spot →
+                Join the Private Beta →
               </a>
             </div>
 
@@ -198,18 +198,15 @@ export function FounderStory() {
 
             <div className="glass rounded-2xl p-4">
               <p className="text-sm text-text-secondary">
-                <strong className="text-[#c9a84c]">
-                  Phase 3: Food Intelligence, Wearables, Bio Impedance & CGM
-                </strong>{" "}
-                — Food OS, wearable sync, bio-impedance scales and CGM experiments. Sleep and
-                movement feed Personal Metabolic Memory next.
+                <strong className="text-[#c9a84c]">Where I am now:</strong> testing food, wearables,
+                body composition and glucose every day — and letting REVA turn those signals into
+                one clear next action.
               </p>
               <p className="mt-2 text-xs text-text-muted">
-                My goal: Phase 6 Longevity — performance-grade health with minimal medication
-                dependency.
+                My documented case study — not medical advice. Individual results vary.
               </p>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

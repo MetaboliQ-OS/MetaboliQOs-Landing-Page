@@ -99,16 +99,17 @@ export function RevaCommandBar() {
           onKeyDown={(e) => {
             if (e.key === "Enter") submit();
           }}
-          placeholder="Ask about your metabolism, food, phases, markers..."
+          placeholder="Ask REVA — what should I do next?"
           className="min-w-0 flex-1 border-none bg-transparent text-[0.88rem] text-text-primary outline-none placeholder:text-text-placeholder"
           aria-label="Ask REVA"
         />
         <button
           type="button"
           title="Voice input"
+          aria-label="Voice input"
           onClick={() => {
             if (pathname === "/reva") {
-              dispatchRevaCommand("[Voice check-in — alpha preview]");
+              dispatchRevaCommand("[Voice check-in — what should I do next?]");
             }
           }}
           className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[rgba(201,168,76,0.18)] bg-[rgba(255,255,255,0.04)] text-text-secondary transition hover:border-[rgba(201,168,76,0.4)] hover:text-[#c9a84c]"
@@ -117,14 +118,16 @@ export function RevaCommandBar() {
         </button>
         <label
           title="Upload file"
+          aria-label="Upload file"
           className="flex h-[34px] w-[34px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-[rgba(201,168,76,0.18)] bg-[rgba(255,255,255,0.04)] text-text-secondary transition hover:border-[rgba(201,168,76,0.4)] hover:text-[#c9a84c]"
         >
           <AttachIcon />
           <input
             ref={fileRef}
             type="file"
-            className="hidden"
+            className="sr-only"
             accept="image/*,.pdf"
+            aria-label="Upload file to REVA"
             onChange={onFile}
           />
         </label>

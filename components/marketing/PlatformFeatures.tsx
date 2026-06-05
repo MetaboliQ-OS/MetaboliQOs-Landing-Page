@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { platformModules } from "@/lib/marketing-content";
 
 function MicIcon() {
@@ -20,14 +20,15 @@ export function PlatformFeatures() {
   return (
     <section className="section-pad">
       <div className="container-main">
-        <span className="badge badge-green mb-4">Alpha Build · Module Preview</span>
+        <span className="badge badge-green mb-4">Platform Modules</span>
         <h2 className="gold-text mb-2 text-[clamp(2rem,4vw,3rem)] italic">
           What We&apos;re Building
         </h2>
         <div className="gold-line" />
         <p className="mb-10 max-w-2xl text-text-secondary">
-          Capture signals. See the decision. Every module below is in active development — shaped
-          by my proof and real metabolic data loops.
+          Not another diet app. Not another dashboard. A metabolic decision system built from real
+          proof. Every module below turns your signals into one clear next action — shaped by my
+          documented journey and real metabolic data.
         </p>
 
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -35,7 +36,7 @@ export function PlatformFeatures() {
             const isFoodOs = mod.title === "MetaboliQ Food OS";
 
             return (
-              <motion.div
+              <m.div
                 key={mod.title}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -113,7 +114,7 @@ export function PlatformFeatures() {
                     ) : null}
                   </>
                 )}
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

@@ -219,11 +219,3 @@ a {
 .scan-line {
   animation: scan-line 2.4s infinite;
 }
-
-.meal-visual {
-  background:
-    radial-gradient(circle at 35% 45%, #e7a93e 0 7%, transparent 8%),
-    radial-gradient(circle at 55% 42%, #d65034 0 7%, transparent 8%),
-    radial-gradient(circle at 48% 62%, #88b04b 0 8%, transparent 9%),
-    linear-gradient(135deg, #1a1a1a, #060606);
-}

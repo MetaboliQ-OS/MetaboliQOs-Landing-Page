@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { decisionCockpitDemo } from "@/lib/marketing-content";
 import { SectionHeading } from "./SectionHeading";
 
@@ -13,13 +13,13 @@ export function DecisionCockpitSection() {
     >
       <div className="container-main">
         <SectionHeading
-          badge="Investor / beta demo view"
-          title="Decision Cockpit — One Screen, Next Action"
-          subtitle="The MVP dashboard should avoid becoming a wall of charts. It should show the user what matters today: metabolic state, strongest risk, next action, what to scan, and which memory has changed."
+          badge="Daily Decision"
+          title="One Screen. One Decision. One Next Step."
+          subtitle="Not another dashboard full of numbers. REVA shows you what matters today: your metabolic state, the strongest risk, your next action, what to scan, and which pattern has changed. Stop guessing. Get one clear next step."
         />
 
         <div className="grid gap-6 lg:grid-cols-2">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -49,9 +49,9 @@ export function DecisionCockpitSection() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -71,10 +71,10 @@ export function DecisionCockpitSection() {
                 Run REVA Example
               </a>
               <a href="#waitlist" className="btn-ghost text-sm">
-                Email Demo Summary
+                Join the Private Beta
               </a>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

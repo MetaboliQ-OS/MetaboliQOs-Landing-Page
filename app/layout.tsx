@@ -1,4 +1,5 @@
 import { Barlow, Barlow_Condensed, Cormorant_Garamond } from "next/font/google";
+import { MotionProvider } from "@/components/MotionProvider";
 import { rootMetadata } from "@/lib/seo";
 import "./globals.css";
 
@@ -10,16 +11,18 @@ const cormorant = Cormorant_Garamond({
 
 const barlow = Barlow({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
   variable: "--font-body",
   display: "swap",
+  preload: true,
 });
 
 const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["600", "700", "800"],
   variable: "--font-condensed",
   display: "swap",
+  preload: true,
 });
 
 export const metadata = rootMetadata;
@@ -34,7 +37,9 @@ export default function RootLayout({
       lang="en-GB"
       className={`${cormorant.variable} ${barlow.variable} ${barlowCondensed.variable}`}
     >
-      <body className={barlow.className}>{children}</body>
+      <body className={barlow.className}>
+        <MotionProvider>{children}</MotionProvider>
+      </body>
     </html>
   );
 }

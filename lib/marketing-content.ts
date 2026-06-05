@@ -13,61 +13,61 @@ export const founderProof = [
 ];
 
 export const mrrruLetters = [
-  { letter: "M", title: "Metabolic", subtitle: "Reversal", color: "#E05252" },
-  { letter: "R", title: "Repair", subtitle: "Biological", color: "#E8973A" },
-  { letter: "R", title: "Recalibration", subtitle: "Systems", color: "#C9A84C" },
-  { letter: "R", title: "Rebuilding", subtitle: "Identity", color: "#4CAF7D" },
-  { letter: "U", title: "Unlocking", subtitle: "Longevity", color: "#4A9EE8" },
+  { letter: "M", title: "Metabolic Reversal", subtitle: "Repair the damage", color: "#E05252" },
+  { letter: "R", title: "Repair", subtitle: "Fix the systems underneath", color: "#E8973A" },
+  { letter: "R", title: "Recalibration", subtitle: "Teach the body a new rhythm", color: "#C9A84C" },
+  { letter: "R", title: "Rebuilding", subtitle: "Rebuild identity, discipline and daily behaviour", color: "#4CAF7D" },
+  { letter: "U", title: "Unlocking Longevity", subtitle: "Energy, execution, wealth and legacy", color: "#4A9EE8" },
 ];
 
 export const phases = [
   {
     id: 1,
-    title: "Baseline Truth & Metabolic Awareness",
+    title: "Know Your Starting Point",
     description:
-      "Capture your real starting point. Blood markers, glucose, body composition, BP, sleep, stress, medication context, movement and behaviour. No guessing. Data only.",
+      "Log where you really are — blood markers, glucose, weight, BP, sleep and stress. No guessing. Just honest data so REVA can guide you from day one.",
     chips: ["Onboarding", "First Report", "Safety Flags"],
     accent: "#E05252",
   },
   {
     id: 2,
-    title: "Stabilisation & Safety Control",
+    title: "Stabilise & Build Routines",
     description:
-      "Reduce biological chaos. Build consistent food timing, movement, sleep and stress routines. Early confidence without aggressive restriction.",
+      "Reduce chaos with simple daily habits — better meal timing, movement, sleep and stress routines. Early wins without extreme restriction.",
     chips: ["Daily REVA", "Food OS", "Sleep"],
     accent: "#C9A84C",
     active: true,
   },
   {
     id: 3,
-    title: "Food Intelligence, Wearables, Bio Impedance & CGM",
+    title: "Smarter Food, Devices & Glucose",
     description:
-      "Food experiments, wearable sync, bio-impedance scale readings and CGM response — recalibrating personal glucose metabolism before memory compounds.",
+      "Learn how your body responds to meals, wearables and glucose readings. REVA helps you adjust food, movement and recovery based on your real patterns.",
     chips: ["Food OS", "Wearables", "BIA Scales", "CGM", "Sleep", "Movement", "Memory"],
     accent: "#C9A84C",
     founderActive: true,
   },
   {
     id: 4,
-    title: "Insulin Sensitivity Rebuild",
+    title: "Rebuild Insulin Sensitivity",
     description:
-      "Rebuild the body's ability to process glucose efficiently. Resistance training, LISS, post-meal walks, higher protein and better sleep improve glucose disposal.",
+      "Train your body to handle glucose better — post-meal walks, resistance training, more protein and better sleep. REVA tells you what to do each day.",
     chips: ["Movement OS", "Sleep OS", "Stress OS"],
     accent: "#4A9EE8",
   },
   {
     id: 5,
-    title: "Marker Improvement & Medication Optimisation",
+    title: "Improve Your Blood Markers",
     description:
-      "Improve labs with clinician-aligned safety. Reduce medication dependency where appropriate. Document every change with evidence.",
+      "Track lab improvements over time with clinician-aligned safety. See what is working, what needs attention, and what to discuss with your doctor.",
     chips: ["Blood OS", "Clinical Safety", "Reports"],
     accent: "#4CAF7D",
   },
   {
     id: 6,
-    title: "Longevity Sovereignty & Personal Metabolic Memory",
+    title: "Long-Term Metabolic Freedom",
     description:
-      "Maintain reversal, prevent relapse and optimise long-term healthspan. REVA as daily decision cockpit. Metabolic flexibility — enjoy life and recover quickly.",
+      "Maintain your progress, prevent relapse, and enjoy life with metabolic flexibility. REVA becomes your daily guide — one screen, one next step.",
     chips: ["Longevity OS", "Executive Reports", "Legacy"],
     accent: "#C9A84C",
   },
@@ -101,49 +101,49 @@ export const journeyMarkersAfter = [
 
 export const ninePillars = [
   {
-    title: "Measurement, Logging & Evidence",
+    title: "Measurement & Evidence",
     description:
-      "What is true and verified? Evidence confidence, journals, data completeness and personal proof library.",
+      "Track what is actually true — your readings, journals and progress over time. REVA uses your data, not generic advice.",
   },
   {
-    title: "Glucose, Insulin & Metabolic Flexibility",
+    title: "Glucose & Metabolic Flexibility",
     description:
-      "How did glucose and insulin respond? CGM patterns, spike/recovery scoring and flexibility index.",
+      "See how your body handles glucose after meals, stress and sleep. Know when you are stable and when something needs to change.",
   },
   {
-    title: "Food Intelligence & Meal Sequencing",
+    title: "Food & Meal Sequencing",
     description:
-      "How should this meal be redesigned? Food OS meal score, sequence guidance and personal tolerance library.",
+      "Learn what to eat first, what to reduce, and how to pair foods so meals work for your body — not against it.",
   },
   {
-    title: "Movement, Muscle & Glucose Disposal",
+    title: "Movement & Muscle",
     description:
-      "What movement improves disposal? Post-meal prescriptions, training rhythm and muscle protection.",
+      "Get practical movement guidance — especially post-meal walks and training that helps your body process glucose.",
   },
   {
-    title: "Fasting, Feeding Window & Meal Timing",
+    title: "Meal Timing & Fasting",
     description:
-      "Is timing helping or harming? Fasting window guidance, break-fast quality and late-meal risk scoring.",
+      "Understand whether when you eat is helping or hurting. REVA flags late meals, fasting windows and break-fast choices.",
   },
   {
-    title: "Sleep, Recovery & Circadian Rhythm",
+    title: "Sleep & Recovery",
     description:
-      "Is recovery supporting metabolism? Sleep readiness, overnight glucose and recovery advice.",
+      "See how poor sleep affects your glucose, cravings and energy. Get simple recovery actions for the day ahead.",
   },
   {
-    title: "Stress, Inflammation & Nervous-System Load",
+    title: "Stress & Inflammation",
     description:
-      "Is stress distorting the pattern? Stress-load interpretation, nervous-system reset and inflammation patterning.",
+      "Spot when stress is pushing your numbers off course. REVA helps you reset before a bad day becomes a bad week.",
   },
   {
-    title: "Medication, Blood Tests & Clinical Safety",
+    title: "Blood Tests & Clinical Safety",
     description:
-      "Safe with medication and labs? Clinician-ready reports, medication timeline and red-flag checks.",
+      "Upload labs, see what improved, and know what to discuss with your clinician. Educational support — not diagnosis.",
   },
   {
-    title: "Behaviour, Accountability & Long-Term Maintenance",
+    title: "Daily Habits & Long-Term Change",
     description:
-      "What behaviour must change next? Daily decision score, relapse prevention and durable identity shift.",
+      "Build the behaviours that last. REVA gives you one clear next action each day — not another overwhelming to-do list.",
     featured: true,
   },
 ];
@@ -151,50 +151,50 @@ export const ninePillars = [
 export const platformModules = [
   {
     title: "REVA AI",
-    subtitle: "Revamp · Execute · Vitality · Advisor",
+    subtitle: "Your daily metabolic guide",
     description:
-      "Your personal metabolic intelligence — trained on the MRRRU framework, my transformation data, and your Personal Metabolic Memory.",
+      "Ask REVA anything about your food, glucose, sleep or stress. Stop guessing — get one clear next action built from my documented journey and your own data.",
     highlights: ["Meal decisions", "Glucose patterns", "Stress + craving rescue", "Weekly reports"],
     footerNote:
-      "Next phase: 10,000+ rules from personal experiments (I was my own guinea pig), expert data after verification, and extrapolations by sex, ethnicity, medical conditions and age.",
+      "Growing smarter with every reading — shaped by my 1,500+ personal experiments and verified expert research.",
   },
   {
     title: "MetaboliQ Food OS",
     subtitle: "800+ recipes · 90+ countries",
     description:
-      "Photo, label, voice or menu input becomes a metabolic meal decision. Every recommendation calibrated to your phase, markers and goals.",
-    highlights: ["Impact scoring", "Meal sequencing", "Dosha-aware options", "My cookbooks"],
+      "Take a photo, scan a label, or describe your meal. REVA tells you what to eat first, what to reduce, when to walk, and what to track after.",
+    highlights: ["Impact scoring", "Meal sequencing", "Global cuisines", "My cookbooks"],
     sideNote:
-      "Thousands of international verified recipes being verified — with a REVA adaptation agent that reshapes meals to your personal goals and phase.",
+      "800+ founder recipes across 90+ countries — adapted by REVA to your goals, culture and current phase.",
     promptExample: "Scan my lunch and tell me what to do next",
   },
   {
     title: "CGM & Wearables",
-    subtitle: "Signals → decisions",
+    subtitle: "Log it. Understand it. Act on it.",
     description:
-      "Sync glucose, sleep, HRV and activity. See post-meal response curves and daily recovery in one metabolic cockpit.",
+      "Upload a CGM screenshot, sync your wearable, or log manually. REVA reads sleep, HRV, steps and glucose — then tells you what matters today.",
     highlights: ["CGM curves", "Wearable sync", "Recovery score", "Trend alerts"],
   },
   {
     title: "FaceScan + Signal Suite",
-    subtitle: "Visual metabolic signals",
+    subtitle: "Another signal for your day",
     description:
-      "Face and retina scanning demos, home glucose context, and multi-signal capture — converted into product logic, not hype.",
-    highlights: ["FaceScan demo", "Retina signals", "Home testing layer", "Safety guardrails"],
+      "A quick wellness scan for heart rate, breathing and recovery trends. Not a diagnosis — another piece of context REVA can use to guide you.",
+    highlights: ["Wellness scan", "Recovery trends", "Stress proxy", "Safety guardrails"],
   },
   {
     title: "Blood OS",
-    subtitle: "Labs → action",
+    subtitle: "Labs you can actually use",
     description:
-      "Blood markers interpreted through MRRRU phases with clinician-aligned safety and personal evidence tracking.",
-    highlights: ["Marker trends", "Phase mapping", "Evidence library", "Executive summaries"],
+      "Upload your blood report and see what improved, what needs attention, and what to discuss with your clinician. Track progress over time.",
+    highlights: ["Marker trends", "What to watch", "Evidence library", "Clinician-ready summaries"],
   },
   {
     title: "Personal Metabolic Memory",
-    subtitle: "Your biology, remembered",
+    subtitle: "Your body teaches the system",
     description:
-      "Every meal, glucose response, sleep cycle and protocol outcome compounds into a living memory layer — the core of MetaboliQ OS.",
-    highlights: ["Long-term memory", "Relapse detection", "Protocol history", "Decision continuity"],
+      "Every meal, glucose reading and sleep pattern helps REVA learn your body over time. The more you log, the better your next action gets.",
+    highlights: ["Pattern memory", "Relapse detection", "Your history", "Smarter decisions"],
   },
 ];
 
@@ -242,10 +242,10 @@ export const revaQuickPrompts = [
 ];
 
 export const socialLinks = [
-  { name: "YouTube", href: "https://youtube.com/@mrupatel", color: "#FF0000" },
+  { name: "YouTube", href: "https://youtube.com/@mrupatel", color: "#B80000" },
   { name: "LinkedIn", href: "https://linkedin.com/in/mrupatel", color: "#0A66C2" },
-  { name: "Instagram", href: "https://instagram.com/mrupatel", color: "#E1306C" },
-  { name: "Facebook", href: "https://facebook.com/MruPatelEntrepreneur", color: "#1877F2" },
+  { name: "Instagram", href: "https://instagram.com/mrupatel", color: "#AD1457" },
+  { name: "Facebook", href: "https://facebook.com/MruPatelEntrepreneur", color: "#145DB2" },
 ];
 
 export const footerPlatformLinks = [
@@ -295,7 +295,7 @@ export const visualDemoWearableStats = [
 ];
 
 export const cgmUploadNote =
-  "Libre, Dexcom, Eversense — photograph your CGM screen and REVA reads glucose values, trends, and time-in-range automatically";
+  "Libre, Dexcom, Eversense — photograph your CGM screen and REVA reads your glucose, spots the pattern, and tells you what to do next.";
 
 export const cgmContexts = [
   "Fasting time",

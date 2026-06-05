@@ -1,10 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   visualDemoFoodResult,
   visualDemoWearableStats,
 } from "@/lib/marketing-content";
+import { FoodScanVisual } from "./FoodScanVisual";
 import { SectionHeading } from "./SectionHeading";
 
 export function VisualDemoLayer() {
@@ -18,13 +19,13 @@ export function VisualDemoLayer() {
     >
       <div className="container-main">
         <SectionHeading
-          badge="v7.4 · Visual Demo Layer"
-          title="Capture Signals. See the Decision."
-          subtitle="Visual examples for scanning a meal, syncing wearable data and running a FaceScan. Live hardware integrations require native app/API permissions; this marketing layer uses realistic demo simulations so every flow is visible offline."
+          badge="See It In Action"
+          title="Stop Guessing. Start Seeing What Your Body Is Telling You."
+          subtitle="This is the system I wish I had when I started my own turnaround. Stop guessing. See your signals. Get one clear next step. Scan your food. Log your glucose. Connect your wearable data. Check your sleep, stress, BP and recovery. Then REVA turns those signals into one simple decision. Not another dashboard full of numbers. Not another diet app. A daily metabolic decision system built from real data, real testing and my own proof."
         />
 
         <div className="grid gap-6 lg:grid-cols-2">
-          <motion.article
+          <m.article
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -42,7 +43,7 @@ export function VisualDemoLayer() {
                 {visualDemoFoodResult.impact}
               </span>
             </div>
-            <div className="meal-visual mb-4 h-32 rounded-xl border border-[rgba(201,168,76,0.15)]" />
+            <FoodScanVisual />
             <h3 className="mb-3 font-semibold text-[#c9a84c]">{visualDemoFoodResult.title}</h3>
             <div className="mb-4 flex flex-wrap gap-2">
               {[
@@ -62,11 +63,11 @@ export function VisualDemoLayer() {
               REVA output: {visualDemoFoodResult.revaOutput}
             </p>
             <a href="#food-os" className="btn-gold mt-5 inline-flex text-sm">
-              Run FoodOS Scan Demo
+              Try FoodOS Scan →
             </a>
-          </motion.article>
+          </m.article>
 
-          <motion.article
+          <m.article
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -95,18 +96,18 @@ export function VisualDemoLayer() {
             </div>
             <div className="flex flex-wrap gap-3">
               <a href="#face-scan" className="btn-gold text-sm">
-                Start Face + Retina Demo
+                See Face &amp; Retina Scan
               </a>
               <a href="#wearables" className="btn-ghost text-sm">
-                Simulate Device Sync
+                Connect Your Devices
               </a>
             </div>
-          </motion.article>
+          </m.article>
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <a href="#demo-platform" className="btn-gold text-sm">
-            Open Demo Platform UI
+            See Your Daily Cockpit
           </a>
           <a href="#phases" className="btn-ghost text-sm">
             Find My MRRRU Phase

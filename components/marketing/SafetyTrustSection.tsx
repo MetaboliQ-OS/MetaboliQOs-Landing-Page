@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { safetyTrustItems } from "@/lib/marketing-content";
 import { SectionHeading } from "./SectionHeading";
 
@@ -21,7 +21,7 @@ export function SafetyTrustSection() {
 
         <div className="grid gap-5 md:grid-cols-3">
           {safetyTrustItems.map((item, i) => (
-            <motion.article
+            <m.article
               key={item.title}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export function SafetyTrustSection() {
             >
               <h3 className="mb-2 text-lg font-semibold text-[#c9a84c]">{item.title}</h3>
               <p className="text-sm leading-relaxed text-text-secondary">{item.desc}</p>
-            </motion.article>
+            </m.article>
           ))}
         </div>
       </div>

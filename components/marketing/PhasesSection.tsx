@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { phases } from "@/lib/marketing-content";
 
 export function PhasesSection() {
@@ -12,23 +12,23 @@ export function PhasesSection() {
     >
       <div className="container-main">
         <span className="text-xs font-bold uppercase tracking-[0.14em] text-text-muted">
-          The Framework
+          Your Journey
         </span>
         <h2 className="gold-text mt-2 mb-2 text-[clamp(2rem,4vw,3rem)] italic leading-tight">
-          MRRRU — The Six-Phase
+          Six Phases To Rebuild
           <br />
-          Metabolic Operating System
+          Your Metabolic Health
         </h2>
         <div className="gold-line" />
         <p className="mb-10 max-w-2xl text-text-secondary">
-          Not a diet. Not a protocol. A living decision framework built from thousands of real
-          data loops — food, glucose, sleep, stress, blood markers and movement — tested on me
-          first.
+          Not a diet plan. A step-by-step path from where you are today to better daily decisions.
+          Each phase builds on the last — food, glucose, sleep, stress, blood markers and movement —
+          tested on me first, built for you.
         </p>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {phases.map((phase, i) => (
-            <motion.article
+            <m.article
               key={phase.id}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -62,7 +62,7 @@ export function PhasesSection() {
                   </span>
                 ))}
               </div>
-            </motion.article>
+            </m.article>
           ))}
         </div>
       </div>

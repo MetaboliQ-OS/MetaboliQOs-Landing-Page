@@ -112,9 +112,20 @@ export function Footer() {
               className="mb-4 h-11 w-auto object-contain object-left"
             />
             <p className="mb-4 max-w-sm text-[0.85rem] leading-relaxed text-text-muted">
-              A founder-proven metabolic operating system. Built from data, not theory. Ongoing
-              longevity journey. Phase 2 of 6 — publicly documented.
+              A founder-proven metabolic operating system. Stop guessing. See your signals. Get one
+              clear next action from REVA — built from my documented journey, not theory.
             </p>
+            <div className="mb-5 flex flex-wrap gap-2.5">
+              <a href="/#waitlist" className="btn-gold text-sm">
+                Join the Private Beta
+              </a>
+              <a
+                href="/#founding"
+                className="btn-ghost border-[rgba(201,168,76,0.45)] text-sm text-[#c9a84c]"
+              >
+                Become a Founding Member
+              </a>
+            </div>
             <div className="flex flex-wrap gap-2.5">
               {socialIcons.map((s) => (
                 <a

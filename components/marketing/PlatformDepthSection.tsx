@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   compactRoadmap,
   platformDepthBullets,
@@ -19,14 +19,14 @@ export function PlatformDepthSection() {
     >
       <div className="container-main">
         <SectionHeading
-          badge="Locked v7.4 platform depth"
-          title="Full Platform Engine — Not Just a Scanner"
-          subtitle="This v7.4 build keeps the locked platform features, founder proof, FoodOS categories, upload flows, REVA examples, waitlist/email capture and interactive demos, with capture tools consolidated into the demo platform and specialist modules. Food scanning, FaceScan, wearables, CGM and blood markers now operate as entry points into the wider MRRRU decision system."
+          badge="Full Platform"
+          title="More Than A Scanner. A Full Metabolic Decision System."
+          subtitle="MetaboliQ OS is not just food scanning. It connects food, glucose, blood markers, sleep, stress, movement, wearables, body composition and personal memory. Every signal feeds REVA. Every answer should give you: one next action, the reason, the risk to watch, the metric to track, and the pattern to remember. That is the moat: your body teaches the system over time."
         />
 
         <div className="mb-10 grid gap-4 sm:grid-cols-2">
           {platformDepthBullets.map((b, i) => (
-            <motion.div
+            <m.div
               key={b.title}
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -36,13 +36,13 @@ export function PlatformDepthSection() {
             >
               <p className="mb-1 text-sm font-bold text-[#c9a84c]">{b.title}</p>
               <p className="text-xs text-text-secondary">{b.desc}</p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
         <div className="mb-12 grid gap-5 md:grid-cols-3">
           {platformDepthCards.map((card, i) => (
-            <motion.article
+            <m.article
               key={card.title}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export function PlatformDepthSection() {
               <a href={card.href} className="btn-ghost w-fit text-sm">
                 {card.cta}
               </a>
-            </motion.article>
+            </m.article>
           ))}
         </div>
 
@@ -64,8 +64,8 @@ export function PlatformDepthSection() {
           <p className="badge badge-amber mb-3">Shortened roadmap</p>
           <h3 className="mb-2 text-2xl italic text-[#c9a84c]">Compact v6/V7 MVP Roadmap</h3>
           <p className="mb-8 max-w-2xl text-sm text-text-secondary">
-            Short, buildable and investor-friendly: prove the decision loop first, then layer
-            signals, then launch paid beta, then expand partners.
+            Built in phases: prove the daily decision loop first, then add more signals, then open
+            the beta, then expand device and partner connections.
           </p>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {compactRoadmap.map((step) => (

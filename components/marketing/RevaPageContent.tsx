@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { RevaChatPanel } from "@/components/marketing/RevaChatPanel";
 import {
   revaCapabilities,
@@ -23,7 +23,7 @@ export function RevaPageContent() {
         ← Back to MetaboliQ OS
       </Link>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         className="mb-10 max-w-3xl"
@@ -41,13 +41,13 @@ export function RevaPageContent() {
           trained on the MRRRU framework, my documented transformation, and your Personal Metabolic
           Memory. Not a chatbot wall. A metabolic advisor that tells you what to do next.
         </p>
-      </motion.div>
+      </m.div>
 
       <Suspense fallback={null}>
         <RevaChatPanel />
       </Suspense>
 
-      <motion.figure
+      <m.figure
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.05 }}
@@ -67,7 +67,7 @@ export function RevaPageContent() {
         <figcaption className="mt-3 text-center text-xs leading-relaxed text-text-muted">
           Your personal metabolic transformation guide · powered by MRRRU &amp; MetaboliQ OS
         </figcaption>
-      </motion.figure>
+      </m.figure>
 
       <section className="mb-12">
         <h2 className="mb-4 text-2xl text-[#c9a84c]" style={{ fontFamily: "var(--font-head)" }}>

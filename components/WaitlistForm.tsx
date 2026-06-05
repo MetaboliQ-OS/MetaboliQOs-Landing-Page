@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import type { SendOtpResponse, VerifyOtpResponse } from "@/types/auth";
 import { betaApplicationSchema } from "@/lib/validations";
 import {
@@ -153,7 +153,7 @@ export function WaitlistForm() {
   const isFounder = pendingApplication?.tier === "founder" || selectedTier === "founder";
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -166,7 +166,7 @@ export function WaitlistForm() {
 
       <AnimatePresence mode="wait">
         {step === "application" && (
-          <motion.form
+          <m.form
             key="application-step"
             initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
@@ -400,11 +400,11 @@ export function WaitlistForm() {
               Unsubscribe anytime.
             </p>
             <p className="text-center text-[0.65rem] text-text-muted">www.metaboliQOS.com</p>
-          </motion.form>
+          </m.form>
         )}
 
         {step === "otp" && pendingApplication && (
-          <motion.form
+          <m.form
             key="otp-step"
             initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
@@ -460,11 +460,11 @@ export function WaitlistForm() {
             >
               Edit application
             </button>
-          </motion.form>
+          </m.form>
         )}
 
         {step === "success" && (
-          <motion.div
+          <m.div
             key="success-step"
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -478,12 +478,12 @@ export function WaitlistForm() {
                 ? "You're registered as a VIP founding member. Check your inbox for a welcome email."
                 : "You're registered on the beta waitlist. We'll review your application within 24 hours."}
             </p>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
       {message && <p className="mt-4 text-sm text-[#e8c76a]">{message}</p>}
       {error && <p className="mt-4 text-sm text-red-400">{error}</p>}
-    </motion.div>
+    </m.div>
   );
 }

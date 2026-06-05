@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { metabolicMyths } from "@/lib/marketing-content";
 import { SectionHeading } from "./SectionHeading";
 
@@ -20,7 +20,7 @@ export function MythBustersSection() {
 
         <div className="grid gap-4 md:grid-cols-2">
           {metabolicMyths.map((item, i) => (
-            <motion.article
+            <m.article
               key={item.myth}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -35,12 +35,12 @@ export function MythBustersSection() {
                 &ldquo;{item.myth}&rdquo;
               </p>
               <p className="text-sm leading-relaxed text-text-secondary">{item.truth}</p>
-            </motion.article>
+            </m.article>
           ))}
         </div>
 
         <p className="mt-8 text-center text-sm text-text-muted">
-          See all 100+ metabolic myths debunked (full library in alpha app)
+          See all 100+ metabolic myths debunked in the full app
         </p>
       </div>
     </section>

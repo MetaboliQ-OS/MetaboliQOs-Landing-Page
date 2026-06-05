@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { wearableDevices, wearableInputMethods } from "@/lib/marketing-content";
 import { SectionHeading } from "./SectionHeading";
 
@@ -13,34 +13,30 @@ export function WearablesSection() {
     >
       <div className="container-main">
         <SectionHeading
-          badge="Wearables OS · Phase 1 Beta"
-          title={
-            <>
-              Connect Your Wearables &amp; <span className="not-italic">Biomarker Devices</span>
-            </>
-          }
-          subtitle="Every signal from your devices feeds REVA. Phase 1 beta: connect via CSV data export, photo upload, or manual entry — the same data, instantly analysed. Full live API connections in Phase 2."
+          badge="Wearables OS"
+          title="Connect Your Devices — Or Log Manually"
+          subtitle="Stop guessing how your day is going. You do not need perfect integrations to start. Use a wearable, CGM, smart scale, BP monitor or sleep tracker if you have one. Upload a screenshot, export a file, or enter the reading manually. Sleep low? Stress high? Glucose spiking? Recovery poor? REVA reads the signal and gives you one clear next action. Full live device connections will come in later phases."
         />
 
         <div className="mb-10 grid gap-4 sm:grid-cols-3">
-          {wearableInputMethods.map((m, i) => (
-            <motion.div
-              key={m.title}
+          {wearableInputMethods.map((method, i) => (
+            <m.div
+              key={method.title}
               initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.04 }}
               className="rounded-xl border border-[rgba(201,168,76,0.15)] bg-[#0d0d0d] p-4"
             >
-              <p className="mb-1 text-sm font-bold text-[#c9a84c]">{m.title}</p>
-              <p className="text-xs text-text-secondary">{m.desc}</p>
-            </motion.div>
+              <p className="mb-1 text-sm font-bold text-[#c9a84c]">{method.title}</p>
+              <p className="text-xs text-text-secondary">{method.desc}</p>
+            </m.div>
           ))}
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {wearableDevices.map((device, i) => (
-            <motion.article
+            <m.article
               key={device.name}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +68,7 @@ export function WearablesSection() {
                   Ask REVA
                 </a>
               </div>
-            </motion.article>
+            </m.article>
           ))}
           <article className="card-hover flex flex-col items-center justify-center rounded-2xl border border-dashed border-[rgba(201,168,76,0.25)] bg-[#0d0d0d] p-4 text-center">
             <h3 className="mb-2 text-sm font-bold text-[#c9a84c]">Manual Entry</h3>
@@ -86,13 +82,13 @@ export function WearablesSection() {
         </div>
 
         <div className="mt-10 rounded-2xl border border-[rgba(76,175,125,0.2)] bg-[rgba(76,175,125,0.06)] p-5 text-center">
-          <p className="text-sm font-semibold text-[#4CAF7D]">Phase 2 — Live API Connections</p>
+          <p className="text-sm font-semibold text-[#4CAF7D]">Coming in later phases</p>
           <p className="mt-2 text-sm text-text-secondary">
-            Full real-time connections via Oura API, Whoop API, Garmin Connect IQ, Apple HealthKit,
-            and Google Health Connect go live in Phase 2. No manual export steps.
+            Full live device connections — Oura, Whoop, Garmin, Apple Health, Google Fit and more —
+            will arrive as the platform matures. Start now with upload, photo or manual entry.
           </p>
           <a href="#waitlist" className="btn-gold mt-4 inline-flex text-sm">
-            Join Beta — Early Access
+            Join the Private Beta
           </a>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ninePillars } from "@/lib/marketing-content";
 
 export function NinePillarsSection() {
@@ -11,19 +11,20 @@ export function NinePillarsSection() {
       style={{ background: "#0d0d0d" }}
     >
       <div className="container-main">
-        <span className="badge badge-gold mb-3">Architecture</span>
+        <span className="badge badge-gold mb-3">What Matters</span>
         <h2 className="gold-text mb-2 text-[clamp(2rem,4vw,3rem)] italic leading-tight">
-          Nine Pillars Visual Architecture
+          Nine Things That Shape Your Metabolic Health
         </h2>
         <div className="gold-line" />
         <p className="mb-10 max-w-3xl text-text-secondary">
-          Each pillar is a system that drives or destroys metabolic health. MRRRU addresses all
-          nine — simultaneously, not one at a time.
+          Most people focus on one thing — food, or exercise, or sleep. MetaboliQ OS tracks all nine
+          because your body does not work in isolation. Stop guessing. See your signals. Get one clear
+          next action from REVA.
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {ninePillars.map((pillar, i) => (
-            <motion.article
+            <m.article
               key={pillar.title}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +40,7 @@ export function NinePillarsSection() {
               <p className="text-[0.82rem] leading-relaxed text-text-secondary">
                 {pillar.description}
               </p>
-            </motion.article>
+            </m.article>
           ))}
         </div>
       </div>

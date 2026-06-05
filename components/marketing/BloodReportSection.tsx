@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { bloodAnalysisLegend, bloodMarkerChips } from "@/lib/marketing-content";
 import { SectionHeading } from "./SectionHeading";
 
@@ -14,16 +14,12 @@ export function BloodReportSection() {
       <div className="container-main">
         <SectionHeading
           badge="Blood Marker OS"
-          title={
-            <>
-              Upload &amp; Analyse Your <span className="not-italic">Blood Reports</span>
-            </>
-          }
-          subtitle="Upload your lab report (PDF or image). REVA reads every marker, flags borderline values, identifies risk signals, highlights wins, and maps results to your MRRRU phase protocol."
+          title="Upload Your Blood Report. Understand What It Means."
+          subtitle="Stop guessing what your labs mean. Upload your blood report and see the important signals clearly. REVA highlights what improved, what needs attention, what may be linked to your food, sleep, stress or movement, and what to discuss with your clinician. One clear next action — not another confusing printout. This is not medical diagnosis — it is educational intelligence to help you ask better questions and track your progress properly."
         />
 
         <div className="grid gap-8 lg:grid-cols-2">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -51,9 +47,9 @@ export function BloodReportSection() {
             <button type="button" className="btn-gold w-full justify-center text-sm">
               Analyse with REVA
             </button>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -85,7 +81,7 @@ export function BloodReportSection() {
               Upload a blood test result to receive a structured MRRRU analysis: flags, trends,
               protocol recommendations and phase alignment.
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

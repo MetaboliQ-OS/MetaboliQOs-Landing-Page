@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const links = [
@@ -11,7 +10,7 @@ const links = [
   { href: "/#demo-platform", label: "Platform" },
   { href: "/#phases", label: "Phases" },
   { href: "/#pillars", label: "9 Pillars" },
-  { href: "/#alpha", label: "Alpha" },
+  { href: "/#waitlist", label: "Beta" },
 ];
 
 export function Navbar() {
@@ -27,12 +26,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 border-b border-[rgba(201,168,76,0.12)] bg-[rgba(8,8,8,0.92)] backdrop-blur-xl"
-    >
+    <header className="sticky top-0 z-50 border-b border-[rgba(201,168,76,0.12)] bg-[rgba(8,8,8,0.92)] backdrop-blur-xl">
       <div className="container-main flex h-[60px] items-center justify-between gap-4">
         <a href="/" className="flex shrink-0 items-center gap-2.5">
           <Image
@@ -58,8 +52,8 @@ export function Navbar() {
               {link.label}
             </a>
           ))}
-          <a href="/#alpha" className="badge badge-gold shrink-0 whitespace-nowrap">
-            Alpha · Coming Soon
+          <a href="/#waitlist" className="badge badge-gold shrink-0 whitespace-nowrap">
+            Join the Private Beta
           </a>
         </nav>
 
@@ -90,14 +84,14 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="/#alpha"
+            href="/#waitlist"
             onClick={() => setOpen(false)}
             className="badge badge-gold mt-2 inline-flex"
           >
-            Alpha · Coming Soon
+            Join the Private Beta
           </a>
         </nav>
       )}
-    </motion.header>
+    </header>
   );
 }

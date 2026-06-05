@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   personalMemoryLayers,
   revaDecisionStandard,
@@ -19,9 +19,9 @@ export function SignalCaptureSection() {
     >
       <div className="container-main">
         <SectionHeading
-          badge="Signal Capture Suite"
-          title="Signal Capture Suite"
-          subtitle="The metabolic decision layer that turns food, glucose, camera wellness signals, biomarkers, sleep, stress, movement, gut signals and personal memory into the next best action. Every signal routes to REVA and the MRRRU rules engine."
+          badge="How It Works"
+          title="Scan Your Food. Log Your Signals. Let REVA Tell You What To Do Next."
+          subtitle="Stop guessing. See your signals. Get one clear next action. Take a photo of your meal. Log your glucose, sleep, stress, BP or wearable data. Run a Face & Retina wellness scan when available. REVA tells you what to eat, what to adjust, what to watch, and what to track next."
         />
 
         <div className="mb-8 flex flex-wrap gap-2">
@@ -41,7 +41,7 @@ export function SignalCaptureSection() {
           </p>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {revaDecisionStandard.map((item, i) => (
-              <motion.div
+              <m.div
                 key={item.title}
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ export function SignalCaptureSection() {
               >
                 <p className="mb-1 text-sm font-bold text-[#c9a84c]">{item.title}</p>
                 <p className="text-xs text-text-secondary">{item.desc}</p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -98,14 +98,17 @@ export function SignalCaptureSection() {
           </p>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { label: "Energy level (1-10)", value: 5 },
-              { label: "Stress level (1-10)", value: 3 },
-              { label: "Hunger level (1-10)", value: 4 },
-              { label: "Sleep quality (1-10)", value: 6 },
+              { id: "checkin-energy", label: "Energy level (1-10)", value: 5 },
+              { id: "checkin-stress", label: "Stress level (1-10)", value: 3 },
+              { id: "checkin-hunger", label: "Hunger level (1-10)", value: 4 },
+              { id: "checkin-sleep", label: "Sleep quality (1-10)", value: 6 },
             ].map((field) => (
-              <div key={field.label}>
-                <label className="mb-2 block text-xs text-text-muted">{field.label}</label>
+              <div key={field.id}>
+                <label htmlFor={field.id} className="mb-2 block text-xs text-text-muted">
+                  {field.label}
+                </label>
                 <input
+                  id={field.id}
                   type="range"
                   min={1}
                   max={10}
@@ -113,6 +116,9 @@ export function SignalCaptureSection() {
                   className="w-full accent-[#c9a84c]"
                   readOnly
                   aria-readonly
+                  aria-valuenow={field.value}
+                  aria-valuemin={1}
+                  aria-valuemax={10}
                 />
                 <span className="text-sm font-semibold text-[#c9a84c]">{field.value}</span>
               </div>
@@ -122,7 +128,7 @@ export function SignalCaptureSection() {
             Submit Check-In
           </button>
           <p className="mt-3 text-xs text-text-muted">
-            Submit your check-in to get today&apos;s REVA guidance (alpha preview).
+            Submit your check-in to get today&apos;s next action from REVA.
           </p>
         </div>
       </div>

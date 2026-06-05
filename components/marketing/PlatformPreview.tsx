@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const cockpitStats = [
   { label: "Glucose", value: "6.2", sub: "mmol/L stable", accent: "#4CAF7D" },
@@ -56,7 +56,7 @@ function CockpitScreenshotVisual() {
     <div className="flex h-full flex-col items-center justify-center">
       <div className="mb-3 flex w-full max-w-[360px] items-center justify-between gap-2 px-1">
         <p className="text-[0.58rem] font-bold uppercase tracking-[0.14em] text-text-muted">
-          Alpha app · cockpit preview
+          Daily metabolic cockpit
         </p>
         <span className="badge badge-green shrink-0 text-[0.6rem]">Screenshot</span>
       </div>
@@ -71,7 +71,7 @@ function CockpitScreenshotVisual() {
             <div className="h-2 w-2 rounded-full bg-[#4CAF7D]" aria-hidden />
           </div>
 
-          <p className="mb-3 text-[0.65rem] text-text-muted">Demo · sync wearables · log glucose</p>
+          <p className="mb-3 text-[0.65rem] text-text-muted">Sync wearables · log glucose · ask REVA</p>
 
           <div className="mb-3 grid grid-cols-2 gap-2">
             {highlightMetrics.map((m) => (
@@ -145,14 +145,14 @@ function CockpitScreenshotVisual() {
               REVA
             </p>
             <p className="mt-1 text-[0.72rem] leading-relaxed text-text-secondary">
-              Log 2hr &amp; 3hr glucose after meals — CGM when connected, manual when not.
+              Stop guessing — REVA gives you one clear next action based on your signals.
             </p>
           </div>
         </div>
       </div>
 
       <p className="mt-3 max-w-[360px] text-center text-[0.62rem] leading-relaxed text-text-muted">
-        Cockpit UI preview · Sleep, BP, CGM curve, and timed glucose logs in one daily view.
+        Sleep, BP, CGM curve, and timed glucose logs in one daily view.
       </p>
     </div>
   );
@@ -168,19 +168,22 @@ export function PlatformPreview() {
       <div className="container-main">
         <div className="glass overflow-hidden rounded-3xl border border-[rgba(201,168,76,0.2)] p-6 md:p-8 lg:p-10">
           <div className="mb-8 max-w-3xl">
-            <span className="badge badge-gold mb-3">Alpha Platform</span>
+            <span className="badge badge-gold mb-3">Daily Cockpit</span>
             <h2 className="gold-text text-[clamp(1.9rem,4vw,2.75rem)] italic leading-tight">
-              MetaboliQ OS App Cockpit
+              Your Daily Metabolic Cockpit
             </h2>
             <div className="gold-line" />
             <p className="text-[0.98rem] leading-relaxed text-text-secondary md:text-base">
-              Capture signals, ask REVA, receive decisions, update memory — the product layer I
-              use daily. Currently in alpha build.
+              One screen. One decision. One next step. MetaboliQ OS brings your food, glucose,
+              sleep, stress, BP, movement and wearable data into one daily view. REVA then tells
+              you what matters today: what to eat first, what to avoid, when to walk, what reading
+              to log, and what pattern your body is showing. The goal is simple: make better
+              decisions today than you did yesterday.
             </p>
           </div>
 
           <div className="grid items-stretch gap-5 lg:grid-cols-2 lg:gap-6">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -195,10 +198,10 @@ export function PlatformPreview() {
                     Today&apos;s Metabolic Cockpit
                   </h3>
                   <p className="mt-1 text-xs text-text-muted">
-                    Demo · Phase 3 · Food Intelligence &amp; CGM
+                    Food, glucose, sleep &amp; recovery in one place
                   </p>
                 </div>
-                <span className="badge badge-green shrink-0">Live Alpha UI</span>
+                <span className="badge badge-green shrink-0">Today&apos;s view</span>
               </div>
 
               <div className="mb-4 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
@@ -228,10 +231,11 @@ export function PlatformPreview() {
                   REVA · next best action
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                  Sleep logged at <strong className="text-text-primary">7 hrs</strong>. BP{" "}
+                  Stop guessing. REVA reads your signals and gives one next step. Sleep{" "}
+                  <strong className="text-text-primary">7 hrs</strong>. BP{" "}
                   <strong className="text-text-primary">128/81</strong> · pulse{" "}
-                  <strong className="text-text-primary">59 bpm</strong>. Log 2hr and 3hr
-                  glucose after meals — CGM when connected, or add manually.
+                  <strong className="text-text-primary">59 bpm</strong>. Log 2hr and 3hr glucose
+                  after meals — CGM when connected, or add manually.
                 </p>
               </div>
 
@@ -247,9 +251,9 @@ export function PlatformPreview() {
                   ),
                 )}
               </div>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -257,7 +261,7 @@ export function PlatformPreview() {
               className="flex min-h-full items-center"
             >
               <CockpitScreenshotVisual />
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </div>

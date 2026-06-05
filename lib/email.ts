@@ -83,66 +83,184 @@ function welcomeEmailContent(isVip: boolean) {
   const siteUrl = absoluteUrl("/");
   const revaUrl = absoluteUrl("/reva");
 
-  const subject = isVip
-    ? "Welcome to MetaboliQ OS — VIP founding member"
-    : "Welcome to MetaboliQ OS — You're on the beta waitlist";
+  if (isVip) {
+    return vipFounderWelcomeContent(siteUrl, revaUrl);
+  }
 
-  const listLabel = isVip
-    ? "waitlist as a VIP founding member"
-    : "beta waitlist";
-  const accessLine = isVip
-    ? "- You're a VIP founding member with early access as modules go live"
-    : "- You'll be notified as soon as beta access becomes available";
+  return betaWelcomeContent(siteUrl, revaUrl);
+}
 
-  const text = `Hello,
+function vipFounderWelcomeContent(siteUrl: string, revaUrl: string) {
+  const subject = "Welcome to MetaboliQ OS";
 
-You're in. Thank you for verifying and joining the MetaboliQ OS ${listLabel}.
+  const text = `Welcome to MetaboliQ OS
 
-From now on, you will be receiving emails from me — including weekly updates on the journey, the data, and what's being built in alpha.
+Hello,
 
-What to expect:
-- Weekly update emails with real progress, experiments, and platform news
-- Occasional emails when something important ships or alpha access opens
-${accessLine}
+You're in.
 
-Explore what we're building: ${siteUrl}
-REVA AI overview: ${revaUrl}
+Thank you for your support and joining the MetaboliQ OS VIP Founding Member waitlist.
 
-I'm building this in public from my own metabolic transformation — documented daily, no shortcuts.
+This is not just another health app launch list. You are now part of the early community helping shape a platform being built from real metabolic transformation, real data, daily testing, and the belief that people need better tools to understand what is actually happening inside their body.
 
-Glad you're here,
-Mru Patel — MetaboliQ OS
+Over the coming weeks, I'll be sharing the journey openly — what I'm testing, what I'm learning, what we're building, what is working, what still needs improving, and how MetaboliQ OS powered by MRRRU is developing into a personal metabolic command system.
 
-You're receiving this because you verified your email on the MetaboliQ OS waitlist.`;
+You'll receive:
+
+- Weekly founder updates on the platform, my own data-led health journey, experiments, lessons and build progress.
+
+- Early access opportunities as beta modules begin opening, including Food OS, REVA AI, meal sequencing, metabolic memory, movement, sleep, stress, blood marker and CGM-related features.
+
+- Founder-only feedback requests where I'll ask for your input on features, wording, design, user journey, content, videos, reports and what would genuinely help you or someone you care about.
+
+- Beta testing invitations for the app as we start releasing early versions. Your feedback will help improve the product before wider launch.
+
+- Behind-the-scenes content including short videos, explainers, experiments, founder notes and early platform previews.
+
+I'm building this in public because I believe health should be measured, understood and rebuilt intelligently, not guessed.
+
+My own journey started with serious metabolic warning signs and became a daily experiment in food, timing, walking, sleep, stress, blood markers, CGM data and behaviour change. MetaboliQ OS is being built from that lived experience, but the goal is much bigger: to help people make better daily metabolic decisions before things become bigger problems.
+
+As a VIP Founding Member, I'd love your involvement.
+
+When I share updates, please reply with honest feedback. Tell me what is clear, what is confusing, what feels valuable, what feels missing, and what you would want the app, videos or reports to do for you.
+
+This early community can help shape the product properly.
+
+Visit MetaboliQ OS: ${siteUrl}
+Learn about REVA AI: ${revaUrl}
+
+Happy, proud and glad you're here. Welcome.
+
+Mru Patel
+Founder, MetaboliQ OS powered by MRRRU`;
 
   const html = `
-    <div style="font-family: Arial, sans-serif; color: #1a1a1a; max-width: 560px; margin: 0 auto;">
-      <h2 style="color: #c9a84c; margin-bottom: 4px;">Welcome to MetaboliQ OS</h2>
+    <div style="font-family: Arial, sans-serif; color: #1a1a1a; max-width: 600px; margin: 0 auto; line-height: 1.65;">
+      <h2 style="color: #c9a84c; margin-bottom: 8px; font-size: 26px;">Welcome to MetaboliQ OS</h2>
       <p>Hello,</p>
+      <p><strong>You're in.</strong></p>
       <p>
-        <strong>You're in.</strong> Thank you for verifying and joining the ${listLabel}.
+        Thank you for your support and joining the MetaboliQ OS
+        <strong>VIP Founding Member waitlist</strong>.
       </p>
-      <p style="margin: 20px 0; padding: 16px 18px; background: #f7f3e8; border-left: 4px solid #c9a84c; line-height: 1.6;">
-        <strong>From now on, you will be receiving emails from me</strong> — including
-        <strong> weekly updates</strong> on the journey, the data, and what's being built in alpha.
+      <p>
+        This is not just another health app launch list. You are now part of the early community
+        helping shape a platform being built from real metabolic transformation, real data, daily
+        testing, and the belief that people need better tools to understand what is actually
+        happening inside their body.
       </p>
-      <p style="margin: 16px 0 8px; font-weight: bold;">What to expect</p>
-      <ul style="padding-left: 20px; line-height: 1.6;">
-        <li><strong>Weekly update emails</strong> — real progress, experiments, and platform news</li>
-        <li>Occasional emails when something important ships or alpha access opens</li>
-        <li>${accessLine.replace(/^- /, "")}</li>
+      <p>
+        Over the coming weeks, I'll be sharing the journey openly — what I'm testing, what I'm
+        learning, what we're building, what is working, what still needs improving, and how
+        MetaboliQ OS powered by MRRRU is developing into a personal metabolic command system.
+      </p>
+      <p style="margin: 20px 0 10px; font-weight: bold;">You'll receive:</p>
+      <ul style="padding-left: 20px; margin: 0 0 20px;">
+        <li style="margin-bottom: 10px;">
+          <strong>Weekly founder updates</strong> on the platform, my own data-led health journey,
+          experiments, lessons and build progress.
+        </li>
+        <li style="margin-bottom: 10px;">
+          <strong>Early access opportunities</strong> as beta modules begin opening, including
+          Food OS, REVA AI, meal sequencing, metabolic memory, movement, sleep, stress, blood
+          marker and CGM-related features.
+        </li>
+        <li style="margin-bottom: 10px;">
+          <strong>Founder-only feedback requests</strong> where I'll ask for your input on features,
+          wording, design, user journey, content, videos, reports and what would genuinely help you
+          or someone you care about.
+        </li>
+        <li style="margin-bottom: 10px;">
+          <strong>Beta testing invitations</strong> for the app as we start releasing early versions.
+          Your feedback will help improve the product before wider launch.
+        </li>
+        <li style="margin-bottom: 10px;">
+          <strong>Behind-the-scenes content</strong> including short videos, explainers,
+          experiments, founder notes and early platform previews.
+        </li>
       </ul>
+      <p>
+        I'm building this in public because I believe health should be measured, understood and
+        rebuilt intelligently, not guessed.
+      </p>
+      <p>
+        My own journey started with serious metabolic warning signs and became a daily experiment
+        in food, timing, walking, sleep, stress, blood markers, CGM data and behaviour change.
+        MetaboliQ OS is being built from that lived experience, but the goal is much bigger: to
+        help people make better daily metabolic decisions before things become bigger problems.
+      </p>
+      <p style="margin: 20px 0; padding: 16px 18px; background: #f7f3e8; border-left: 4px solid #c9a84c;">
+        <strong>As a VIP Founding Member, I'd love your involvement.</strong><br /><br />
+        When I share updates, please reply with honest feedback. Tell me what is clear, what is
+        confusing, what feels valuable, what feels missing, and what you would want the app, videos
+        or reports to do for you.<br /><br />
+        This early community can help shape the product properly.
+      </p>
       <p style="margin: 24px 0;">
         <a href="${siteUrl}" style="display: inline-block; padding: 12px 20px; background: #c9a84c; color: #080808; text-decoration: none; font-weight: bold; border-radius: 6px;">Visit MetaboliQ OS</a>
       </p>
-      <p style="font-size: 14px;">
+      <p style="font-size: 14px; margin-bottom: 24px;">
         <a href="${revaUrl}" style="color: #4a9ee8;">Learn about REVA AI →</a>
       </p>
-      <p>
-        I'm building this in public from my own metabolic transformation — documented daily,
-        no shortcuts.
+      <p>Happy, proud and glad you're here. Welcome.</p>
+      <p style="margin-top: 24px;">
+        <strong>Mru Patel</strong><br />
+        Founder, MetaboliQ OS powered by MRRRU
       </p>
-      <p style="margin-top: 24px;">Glad you're here,<br /><strong>Mru Patel — MetaboliQ OS</strong></p>
+      <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 24px 0;" />
+      <p style="font-size: 12px; color: #888;">
+        You're receiving this because you verified your email on the MetaboliQ OS waitlist.
+      </p>
+    </div>
+  `;
+
+  return { subject, text, html };
+}
+
+function betaWelcomeContent(siteUrl: string, revaUrl: string) {
+  const subject = "Welcome to MetaboliQ OS";
+
+  const text = `Welcome to MetaboliQ OS
+
+Hello,
+
+You're in.
+
+Thank you for joining the MetaboliQ OS beta waitlist.
+
+You'll receive updates as beta access opens and modules begin rolling out — including Food OS, REVA AI, metabolic memory, movement, sleep, stress, blood markers and CGM-related features.
+
+Visit MetaboliQ OS: ${siteUrl}
+Learn about REVA AI: ${revaUrl}
+
+Glad you're here.
+
+Mru Patel
+Founder, MetaboliQ OS powered by MRRRU`;
+
+  const html = `
+    <div style="font-family: Arial, sans-serif; color: #1a1a1a; max-width: 600px; margin: 0 auto; line-height: 1.65;">
+      <h2 style="color: #c9a84c; margin-bottom: 8px; font-size: 26px;">Welcome to MetaboliQ OS</h2>
+      <p>Hello,</p>
+      <p><strong>You're in.</strong></p>
+      <p>Thank you for joining the MetaboliQ OS beta waitlist.</p>
+      <p>
+        You'll receive updates as beta access opens and modules begin rolling out — including
+        Food OS, REVA AI, metabolic memory, movement, sleep, stress, blood markers and
+        CGM-related features.
+      </p>
+      <p style="margin: 24px 0;">
+        <a href="${siteUrl}" style="display: inline-block; padding: 12px 20px; background: #c9a84c; color: #080808; text-decoration: none; font-weight: bold; border-radius: 6px;">Visit MetaboliQ OS</a>
+      </p>
+      <p style="font-size: 14px; margin-bottom: 24px;">
+        <a href="${revaUrl}" style="color: #4a9ee8;">Learn about REVA AI →</a>
+      </p>
+      <p>Glad you're here.</p>
+      <p style="margin-top: 24px;">
+        <strong>Mru Patel</strong><br />
+        Founder, MetaboliQ OS powered by MRRRU
+      </p>
       <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 24px 0;" />
       <p style="font-size: 12px; color: #888;">
         You're receiving this because you verified your email on the MetaboliQ OS waitlist.

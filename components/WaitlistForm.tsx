@@ -1,13 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import type { SendOtpResponse, VerifyOtpResponse } from "@/types/auth";
 import { betaApplicationSchema } from "@/lib/validations";
-import { PRIMARY_INTEREST_OPTIONS, type SignupType } from "@/lib/waitlist";
+import {
+  PRIMARY_INTEREST_OPTIONS,
+  type PrimaryInterestValue,
+  type SignupType,
+} from "@/lib/waitlist";
 
 const otpSchema = z.object({
   otp: z.string().regex(/^\d{6}$/, "Enter the 6-digit code from your email."),
@@ -42,7 +46,7 @@ export function WaitlistForm() {
       lastName: "",
       email: "",
       country: "",
-      primaryInterest: "",
+      primaryInterests: [] as PrimaryInterestValue[],
       whatBringsYouHere: "",
       tier: "user",
     },
@@ -282,37 +286,84 @@ export function WaitlistForm() {
               )}
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
-                <label className={labelClass} htmlFor="country">
-                  Country
-                </label>
-                <input
-                  id="country"
-                  type="text"
-                  placeholder="UAE, UK, USA, India..."
-                  autoComplete="country-name"
-                  className={inputClass}
-                  {...applicationForm.register("country")}
+            <div>
+              <label className={labelClass} htmlFor="country">
+                Country
+              </label>
+              <input
+                id="country"
+                type="text"
+                placeholder="UAE, UK, USA, India..."
+                autoComplete="country-name"
+                className={inputClass}
+                {...applicationForm.register("country")}
+              />
+            </div>
+
+            <fieldset className="space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <legend className={labelClass}>Primary interests (select all that apply)</legend>
+                <Controller
+                  name="primaryInterests"
+                  control={applicationForm.control}
+                  render={({ field }) => {
+                    const allValues = PRIMARY_INTEREST_OPTIONS.map((option) => option.value);
+                    const allSelected = allValues.every((value) => field.value.includes(value));
+                    return (
+                      <button
+                        type="button"
+                        className="text-xs text-[#e8c76a] underline-offset-2 hover:underline"
+                        onClick={() => field.onChange(allSelected ? [] : allValues)}
+                      >
+                        {allSelected ? "Clear all" : "Select all"}
+                      </button>
+                    );
+                  }}
                 />
               </div>
-              <div>
-                <label className={labelClass} htmlFor="primaryInterest">
-                  Primary interest
-                </label>
-                <select
-                  id="primaryInterest"
-                  className={`${inputClass} appearance-none`}
-                  {...applicationForm.register("primaryInterest")}
-                >
-                  {PRIMARY_INTEREST_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
+              <Controller
+                name="primaryInterests"
+                control={applicationForm.control}
+                render={({ field }) => (
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {PRIMARY_INTEREST_OPTIONS.map((option) => {
+                      const checked = field.value.includes(option.value);
+                      return (
+                        <label
+                          key={option.value}
+                          className={`flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2.5 text-sm transition ${
+                            checked
+                              ? "border-[rgba(201,168,76,0.45)] bg-[rgba(201,168,76,0.08)] text-text-primary"
+                              : "border-[rgba(201,168,76,0.18)] bg-[#0c0b09] text-text-secondary"
+                          }`}
+                        >
+                          <input
+                            type="checkbox"
+                            className="accent-[#c9a84c]"
+                            checked={checked}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                field.onChange([...field.value, option.value]);
+                              } else {
+                                field.onChange(
+                                  field.value.filter((value) => value !== option.value),
+                                );
+                              }
+                            }}
+                          />
+                          {option.label}
+                        </label>
+                      );
+                    })}
+                  </div>
+                )}
+              />
+              {applicationForm.formState.errors.primaryInterests && (
+                <p className="text-xs text-red-400">
+                  {applicationForm.formState.errors.primaryInterests.message}
+                </p>
+              )}
+            </fieldset>
 
             <div>
               <label className={labelClass} htmlFor="whatBringsYouHere">

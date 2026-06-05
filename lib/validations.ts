@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { PRIMARY_INTEREST_VALUES, serializePrimaryInterests } from "@/lib/waitlist";
 
 const emailFormat = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
 
@@ -18,7 +19,9 @@ const profileFields = {
     .min(1, "Last name is required.")
     .max(80, "Last name is too long."),
   country: z.string().trim().max(120, "Country is too long.").optional().or(z.literal("")),
-  primaryInterest: z.string().trim().max(80).optional().or(z.literal("")),
+  primaryInterests: z
+    .array(z.enum(PRIMARY_INTEREST_VALUES))
+    .max(PRIMARY_INTEREST_VALUES.length, "Too many interests selected."),
   whatBringsYouHere: z
     .string()
     .trim()
@@ -63,7 +66,7 @@ export function normalizeApplicationData(data: BetaApplicationInput) {
     firstName: data.firstName,
     lastName: data.lastName,
     country: data.country || null,
-    primaryInterest: data.primaryInterest || null,
+    primaryInterest: serializePrimaryInterests(data.primaryInterests),
     whatBringsYouHere: data.whatBringsYouHere || null,
     email: data.email,
     isVip: data.tier === "founder",

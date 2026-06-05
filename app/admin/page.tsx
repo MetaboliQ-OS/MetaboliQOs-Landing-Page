@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { PRIMARY_INTEREST_OPTIONS } from "@/lib/waitlist";
+import { formatPrimaryInterests } from "@/lib/waitlist";
 
 type WaitlistUser = {
   id: string;
@@ -16,11 +16,6 @@ type WaitlistUser = {
   verified: boolean;
   createdAt: string;
 };
-
-function interestLabel(value: string | null) {
-  if (!value) return "—";
-  return PRIMARY_INTEREST_OPTIONS.find((option) => option.value === value)?.label ?? value;
-}
 
 export default function AdminWaitlistPage() {
   const [secret, setSecret] = useState("");
@@ -118,7 +113,7 @@ export default function AdminWaitlistPage() {
                 </div>
                 <div className="mt-2 grid gap-1 text-xs text-text-secondary sm:grid-cols-2">
                   <span>Country: {user.country || "—"}</span>
-                  <span>Interest: {interestLabel(user.primaryInterest)}</span>
+                  <span>Interests: {formatPrimaryInterests(user.primaryInterest)}</span>
                 </div>
                 {user.whatBringsYouHere && (
                   <p className="mt-2 text-xs leading-relaxed text-text-muted">

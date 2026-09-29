@@ -13,11 +13,11 @@ export const founderProof = [
 ];
 
 export const mrrruLetters = [
-  { letter: "M", title: "Metabolic Reversal", subtitle: "Repair the damage", color: "#E05252" },
+  { letter: "M", title: "Metabolic", subtitle: "The engine behind your health", color: "#E05252" },
   { letter: "R", title: "Repair", subtitle: "Fix the systems underneath", color: "#E8973A" },
-  { letter: "R", title: "Recalibration", subtitle: "Teach the body a new rhythm", color: "#C9A84C" },
-  { letter: "R", title: "Rebuilding", subtitle: "Rebuild identity, discipline and daily behaviour", color: "#4CAF7D" },
-  { letter: "U", title: "Unlocking Longevity", subtitle: "Energy, execution, wealth and legacy", color: "#4A9EE8" },
+  { letter: "R", title: "Reversal", subtitle: "Reverse the damage", color: "#C9A84C" },
+  { letter: "R", title: "Recalibration", subtitle: "Teach the body a new rhythm", color: "#4CAF7D" },
+  { letter: "U", title: "Unlocked", subtitle: "Energy, execution, wealth and legacy", color: "#4A9EE8" },
 ];
 
 export const phases = [

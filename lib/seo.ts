@@ -21,7 +21,10 @@ export function createPageMetadata({
 }: PageMetadataInput): Metadata {
   const url = absoluteUrl(path);
   const siteUrl = getSiteUrl();
-  const imagePath = path === "/reva" ? "/reva/opengraph-image" : "/opengraph-image";
+  // /reva has its own colocated opengraph-image file; inside a route group its
+  // URL is generated, so let the file convention supply it there.
+  const ownImage = path === "/reva";
+  const imagePath = "/opengraph-image";
 
   return {
     title,
@@ -54,20 +57,24 @@ export function createPageMetadata({
       siteName: siteConfig.name,
       title,
       description,
-      images: [
-        {
-          url: imagePath,
-          width: 1200,
-          height: 630,
-          alt: ogImageAlt ?? `${siteConfig.name} — ${siteConfig.tagline}`,
-        },
-      ],
+      ...(ownImage
+        ? {}
+        : {
+            images: [
+              {
+                url: imagePath,
+                width: 1200,
+                height: 630,
+                alt: ogImageAlt ?? `${siteConfig.name} — ${siteConfig.tagline}`,
+              },
+            ],
+          }),
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [imagePath],
+      ...(ownImage ? {} : { images: [imagePath] }),
     },
     category: "health",
   };

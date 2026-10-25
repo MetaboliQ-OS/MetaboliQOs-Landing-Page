@@ -26,6 +26,79 @@
   --red: #e05252;
   --blue: #4a9ee8;
   --amber: #e8973a;
+
+  /* Semantic surface tokens (V1). The dark values are exactly the colours the
+     site already uses; the light theme below redefines them. */
+  --surface-1: #0d0d0d;
+  --surface-2: #141414;
+  --surface-3: #1c1c1c;
+  --line: rgba(201, 168, 76, 0.12);
+  --line-strong: rgba(201, 168, 76, 0.4);
+  --gold-ink: #c9a84c;
+  --gold-wash: rgba(201, 168, 76, 0.06);
+  --header-bg: rgba(8, 8, 8, 0.92);
+  --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+
+/* Light theme — a warm paper ground so the gold brand still reads. Text and
+   status colours are darkened for contrast on light backgrounds. */
+[data-theme="light"] {
+  --background: #f6f1e7;
+  --obsidian: #f6f1e7;
+  --dark-1: #efe8da;
+  --dark-2: #fffdf8;
+  --dark-3: #f3ecdf;
+  --card: #fffdf8;
+  --gold-light: #b08a2a;
+  --text-primary: #1d1a15;
+  --text-secondary: #433d33;
+  --text-muted: #6b6355;
+  --text-placeholder: #8d8475;
+  --border-gold: rgba(139, 105, 20, 0.22);
+  --green: #2e8a5c;
+  --red: #c43c3c;
+  --blue: #2f76b8;
+  --amber: #b4661a;
+  --surface-1: #efe8da;
+  --surface-2: #fffdf8;
+  --surface-3: #f3ecdf;
+  --line: rgba(139, 105, 20, 0.16);
+  --line-strong: rgba(139, 105, 20, 0.42);
+  --gold-ink: #8b6914;
+  --gold-wash: rgba(139, 105, 20, 0.06);
+  --header-bg: rgba(246, 241, 231, 0.92);
+  --shadow-card: 0 8px 30px rgba(60, 45, 10, 0.1);
+  color-scheme: light;
+}
+
+[data-theme="light"] .gold-text {
+  background: linear-gradient(130deg, #6f5410, #9a7618);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+[data-theme="light"] .glass {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.85), rgba(255, 253, 248, 0.6) 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-ink);
+  outline-offset: 2px;
+  border-radius: 6px;
 }
 
 * {
@@ -34,6 +107,14 @@
 
 html {
   scroll-behavior: smooth;
+  /* Anchor jumps land below the sticky header. */
+  scroll-padding-top: 84px;
+}
+
+@media (min-width: 1280px) {
+  html {
+    scroll-padding-top: 120px;
+  }
 }
 
 body {
@@ -115,7 +196,7 @@ a {
 
 .badge-gold {
   background: rgba(201, 168, 76, 0.15);
-  color: var(--gold);
+  color: var(--gold-ink);
   border: 1px solid rgba(201, 168, 76, 0.3);
 }
 
@@ -163,7 +244,7 @@ a {
 }
 
 .btn-ghost {
-  background: rgba(201, 168, 76, 0.04);
+  background: var(--gold-wash);
   border: 1px solid var(--border-gold);
   color: var(--text-secondary);
   border-radius: 12px;
@@ -175,7 +256,7 @@ a {
 }
 
 .btn-ghost:hover {
-  border-color: rgba(201, 168, 76, 0.45);
+  border-color: var(--line-strong);
   color: var(--text-primary);
   background: rgba(201, 168, 76, 0.09);
 }
@@ -185,9 +266,9 @@ a {
 }
 
 .card-hover:hover {
-  border-color: rgba(201, 168, 76, 0.45);
+  border-color: var(--line-strong);
   transform: translateY(-2px);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), 0 4px 30px rgba(201, 168, 76, 0.08);
+  box-shadow: var(--shadow-card), 0 4px 30px rgba(201, 168, 76, 0.08);
 }
 
 @keyframes pulse-dot {

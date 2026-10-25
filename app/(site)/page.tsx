@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { Navbar } from "@/components/marketing/Navbar";
 import { createPageMetadata } from "@/lib/seo";
 import { homePageJsonLd } from "@/lib/json-ld";
 import { siteConfig } from "@/lib/site";
@@ -68,17 +67,12 @@ const AlphaComingSoon = dynamic(() =>
 const FounderQuoteSection = dynamic(() =>
   import("@/components/marketing/FounderQuoteSection").then((mod) => mod.FounderQuoteSection),
 );
-const Footer = dynamic(() =>
-  import("@/components/marketing/Footer").then((mod) => mod.Footer),
-);
-import { DeferredRevaCommandBar } from "@/components/marketing/DeferredRevaCommandBar";
 
 export default function HomePage() {
   return (
     <>
       <JsonLd data={homePageJsonLd()} />
-      <main>
-        <Navbar />
+      <>
         <Hero />
         <VisualDemoLayer />
         <PlatformPreview />
@@ -100,9 +94,7 @@ export default function HomePage() {
         <SafetyTrustSection />
         <AlphaComingSoon />
         <FounderQuoteSection />
-        <Footer />
-        <DeferredRevaCommandBar />
-      </main>
+      </>
     </>
   );
 }

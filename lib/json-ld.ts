@@ -69,10 +69,10 @@ export function revaPageJsonLd() {
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: "REVA AI | MetaboliQ OS",
+      name: "Meet REVA | MetaboliQ OS",
       url,
       description:
-        "REVA — Revamp, Execute, Vitality, Advisor. Personal metabolic intelligence for meals, CGM, wearables, blood markers and MRRRU phase guidance.",
+        "REVA is designed to connect your available records, goals and daily context, explain relevant patterns and suggest practical next steps.",
       isPartOf: {
         "@type": "WebSite",
         name: siteConfig.name,
@@ -80,10 +80,10 @@ export function revaPageJsonLd() {
       },
       about: {
         "@type": "SoftwareApplication",
-        name: "REVA AI",
+        name: "REVA",
         applicationCategory: "HealthApplication",
         description:
-          "AI metabolic advisor integrated with Food OS, CGM, wearables and Personal Metabolic Memory.",
+          "Personal AI coach within MetaboliQ OS, with Personal Metabolic Memory.",
       },
       inLanguage: "en-GB",
     },

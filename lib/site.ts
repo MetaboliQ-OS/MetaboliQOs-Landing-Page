@@ -3,10 +3,11 @@ export const siteConfig = {
   name: "MetaboliQ OS",
   shortName: "MetaboliQ",
   legalName: "MetaboliQ OS",
-  tagline: "Your Metabolic Operating System",
-  defaultTitle: "MetaboliQ OS | Powered by MRRRU — Alpha",
+  tagline: "Your Personal Longevity Decision OS",
+  defaultTitle: "MetaboliQ OS powered by MRRRU | Your Personal Longevity Decision OS",
+  // Live V1 §1 platform message.
   defaultDescription:
-    "Founder-proven metabolic operating system: REVA AI, Food OS, CGM, blood markers, wearables and Personal Metabolic Memory. HbA1c 8.3%→5.3% in five months — documented in real time.",
+    "MetaboliQ OS powered by MRRRU is a personal longevity decision system. It brings available health information and daily lifestyle context together to guide practical decisions about food, movement, sleep, stress and recovery.",
   creator: "Mru Patel",
   locale: "en_GB",
   themeColor: "#080808",

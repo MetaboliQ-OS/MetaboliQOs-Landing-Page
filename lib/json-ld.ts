@@ -1,6 +1,7 @@
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
 const sameAs = [
+  "https://www.youtube.com/@metaboliQOS",
   "https://youtube.com/@mrupatel",
   "https://linkedin.com/in/mrupatel",
   "https://instagram.com/mrupatel",

@@ -27,10 +27,10 @@ function signupFromHash(): SignupType {
 }
 
 const inputClass =
-  "w-full rounded-xl border border-[rgba(201,168,76,0.25)] bg-[#0c0b09] px-4 py-3 text-sm text-text-primary outline-none transition placeholder:text-text-placeholder focus:border-[#c9a84c] focus:ring-2 focus:ring-[rgba(201,168,76,0.22)]";
+  "w-full rounded-xl border border-[var(--border-gold)] bg-[var(--surface-1)] px-4 py-3 text-sm text-text-primary outline-none transition placeholder:text-text-placeholder focus:border-[var(--gold-ink)] focus:ring-2 focus:ring-[var(--border-gold)]";
 
 const labelClass =
-  "mb-1.5 block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[#c9a84c]";
+  "mb-1.5 block text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[var(--gold-ink)]";
 
 export function WaitlistForm() {
   const [step, setStep] = useState<Step>("application");
@@ -157,7 +157,7 @@ export function WaitlistForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-[rgba(201,168,76,0.28)] bg-gradient-to-b from-[#17140f] to-[#0b0a09] p-7 shadow-[0_30px_80px_-24px_rgba(0,0,0,0.9)] sm:p-8"
+      className="relative w-full max-w-2xl overflow-hidden rounded-3xl border border-[var(--border-gold)] bg-gradient-to-b from-[var(--surface-2)] to-[var(--surface-1)] p-7 shadow-[var(--shadow-card)] sm:p-8"
     >
       <div
         aria-hidden
@@ -181,7 +181,7 @@ export function WaitlistForm() {
               >
                 Apply for Beta Access
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#c9a84c]">
+              <p className="mt-2 text-sm leading-relaxed text-[var(--gold-ink)]">
                 Complete this form. Applications reviewed within 24 hours. No payment required to
                 join beta.
               </p>
@@ -194,7 +194,7 @@ export function WaitlistForm() {
                   className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 transition ${
                     selectedTier === "user"
                       ? "border-[rgba(74,158,232,0.45)] bg-[rgba(74,158,232,0.08)]"
-                      : "border-[rgba(201,168,76,0.18)] bg-[#0c0b09]"
+                      : "border-[var(--border-gold)] bg-[var(--surface-1)]"
                   }`}
                 >
                   <input
@@ -208,8 +208,8 @@ export function WaitlistForm() {
                 <label
                   className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 transition ${
                     selectedTier === "founder"
-                      ? "border-[rgba(201,168,76,0.55)] bg-[rgba(201,168,76,0.1)]"
-                      : "border-[rgba(201,168,76,0.18)] bg-[#0c0b09]"
+                      ? "border-[var(--line-strong)] bg-[var(--gold-wash)]"
+                      : "border-[var(--border-gold)] bg-[var(--surface-1)]"
                   }`}
                 >
                   <input
@@ -218,7 +218,7 @@ export function WaitlistForm() {
                     className="accent-[#c9a84c]"
                     {...applicationForm.register("tier")}
                   />
-                  <span className="text-sm font-semibold text-[#e8c76a]">Founder</span>
+                  <span className="text-sm font-semibold text-[var(--gold-ink)]">Founder</span>
                 </label>
               </div>
               {applicationForm.formState.errors.tier && (
@@ -312,7 +312,7 @@ export function WaitlistForm() {
                     return (
                       <button
                         type="button"
-                        className="text-xs text-[#e8c76a] underline-offset-2 hover:underline"
+                        className="text-xs text-[var(--gold-ink)] underline-offset-2 hover:underline"
                         onClick={() => field.onChange(allSelected ? [] : allValues)}
                       >
                         {allSelected ? "Clear all" : "Select all"}
@@ -333,8 +333,8 @@ export function WaitlistForm() {
                           key={option.value}
                           className={`flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2.5 text-sm transition ${
                             checked
-                              ? "border-[rgba(201,168,76,0.45)] bg-[rgba(201,168,76,0.08)] text-text-primary"
-                              : "border-[rgba(201,168,76,0.18)] bg-[#0c0b09] text-text-secondary"
+                              ? "border-[var(--line-strong)] bg-[var(--gold-wash)] text-text-primary"
+                              : "border-[var(--border-gold)] bg-[var(--surface-1)] text-text-secondary"
                           }`}
                         >
                           <input
@@ -412,7 +412,7 @@ export function WaitlistForm() {
             onSubmit={otpForm.handleSubmit(submitOtp)}
             className="space-y-4"
           >
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">Verify Email</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-[var(--gold-ink)]">Verify Email</p>
             <h3 className="text-2xl font-semibold">Enter your OTP</h3>
             <p className="text-sm text-text-secondary">
               Code sent to{" "}
@@ -424,7 +424,7 @@ export function WaitlistForm() {
               pattern="[0-9]*"
               maxLength={6}
               placeholder="000000"
-              className="w-full rounded-xl border border-[rgba(201,168,76,0.2)] bg-[#0f0f0f] px-4 py-3 text-center text-2xl tracking-[0.4em] text-text-primary outline-none focus:border-[#c9a84c]"
+              className="w-full rounded-xl border border-[var(--border-gold)] bg-[var(--surface-2)] px-4 py-3 text-center text-2xl tracking-[0.4em] text-text-primary outline-none focus:border-[var(--gold-ink)]"
               {...otpForm.register("otp", {
                 onChange: (e) => {
                   e.target.value = e.target.value.replace(/\D/g, "").slice(0, 6);
@@ -445,7 +445,7 @@ export function WaitlistForm() {
               type="button"
               disabled={submitting}
               onClick={resendOtp}
-              className="w-full text-sm text-text-secondary underline-offset-2 hover:text-[#e8c76a] hover:underline disabled:opacity-50"
+              className="w-full text-sm text-text-secondary underline-offset-2 hover:text-[var(--gold-ink)] hover:underline disabled:opacity-50"
             >
               Resend code
             </button>
@@ -482,7 +482,7 @@ export function WaitlistForm() {
         )}
       </AnimatePresence>
 
-      {message && <p className="mt-4 text-sm text-[#e8c76a]">{message}</p>}
+      {message && <p className="mt-4 text-sm text-[var(--gold-ink)]">{message}</p>}
       {error && <p className="mt-4 text-sm text-red-400">{error}</p>}
     </m.div>
   );

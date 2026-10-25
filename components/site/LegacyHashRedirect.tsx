@@ -20,7 +20,7 @@ const LEGACY_ANCHORS: Record<string, string> = {
   wearables: "/platform/data-devices",
   myths: "/learn",
   waitlist: "/for-you#beta",
-  founding: "/for-you#beta",
+  founding: "/for-you#founding", // the beta form preselects founding membership on this hash
   alpha: "/for-you#beta",
 };
 

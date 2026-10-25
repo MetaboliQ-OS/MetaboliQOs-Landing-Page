@@ -314,3 +314,31 @@ You're receiving this because you joined the MetaboliQ OS waitlist.`;
 
   return { subject, text, html };
 }
+
+/** "Save My Results by Email" from the Start My Journey questionnaire. Nothing is stored. */
+export async function sendStartingFocusEmail(
+  to: string,
+  result: { focus: string; summary: string; action: string },
+) {
+  const startUrl = absoluteUrl("/start");
+  const lines = [
+    `Your suggested starting focus is ${result.focus}.`,
+    `You told us ${result.summary}.`,
+    `Begin with ${result.action}.`,
+  ];
+  const note = "Based on your answers. This is a starting focus, not a diagnosis or a clinical phase assessment.";
+  await sendEmail({
+    to,
+    subject: "Your MetaboliQ OS starting focus",
+    text: `${lines.join("\n")}\n\n${note}\n\nRevisit your starting point: ${startUrl}\n\nMetaboliQ OS Team`,
+    html: `
+      <div style="font-family: Arial, sans-serif; color: #111; max-width: 520px; line-height: 1.6;">
+        <p style="font-size: 18px; font-weight: bold; color: #8b6914;">Your starting focus</p>
+        ${lines.map((l) => `<p>${l}</p>`).join("")}
+        <p style="font-size: 13px; color: #555;">${note}</p>
+        <p><a href="${startUrl}" style="color: #8b6914;">Revisit your starting point</a></p>
+        <p>MetaboliQ OS Team</p>
+      </div>
+    `,
+  });
+}

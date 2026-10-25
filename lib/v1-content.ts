@@ -72,3 +72,35 @@ export const founderVideos = [
 ] as const;
 
 export const youtubeChannel = "https://www.youtube.com/@metaboliQOS";
+
+/** FAQ (§12). */
+export const faqs = [
+  {
+    q: "What is MetaboliQ OS?",
+    a: "A personal longevity decision system designed to connect your available health information and lifestyle context with practical daily actions.",
+  },
+  {
+    q: "Is it a recipe website?",
+    a: "Food OS is one part of the platform. It connects food choices and preparation with your goals and available context. MetaboliQ OS also brings sleep, movement, stress and recorded health information into the picture.",
+  },
+  {
+    q: "Do I need a DNA test or a wearable to begin?",
+    a: "No. Start with the information you have. Supported reports and device data can add context where available. Missing information should remain visible.",
+  },
+  {
+    q: "Does REVA replace my doctor?",
+    a: "No. REVA provides educational coaching and decision support. It does not diagnose, prescribe or replace medical care. Discuss medication and treatment changes with a qualified clinician.",
+  },
+  {
+    q: "Will my results match the founder’s?",
+    a: "Not necessarily. The founder’s records describe his own experience. Your starting point, circumstances and response may differ.",
+  },
+  {
+    q: "What happens after I select Start My Journey?",
+    a: "You begin with a short starting-point questionnaire. Personal records and detailed onboarding are handled in the private experience.",
+  },
+  {
+    q: "Are professional and corporate accounts available now?",
+    a: "These are planned stages. Partners and organisations can register interest through the relevant forms.",
+  },
+] as const;

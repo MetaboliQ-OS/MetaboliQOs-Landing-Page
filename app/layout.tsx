@@ -27,6 +27,9 @@ const barlowCondensed = Barlow_Condensed({
 
 export const metadata = rootMetadata;
 
+// Runs before paint: apply the saved theme (default dark) so pages never flash.
+const themeScript = `try{var t=localStorage.getItem("mq-theme");document.documentElement.dataset.theme=t==="light"?"light":"dark"}catch(e){document.documentElement.dataset.theme="dark"}`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,7 +39,12 @@ export default function RootLayout({
     <html
       lang="en-GB"
       className={`${cormorant.variable} ${barlow.variable} ${barlowCondensed.variable}`}
+      data-theme="dark"
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className={barlow.className}>
         <MotionProvider>{children}</MotionProvider>
       </body>

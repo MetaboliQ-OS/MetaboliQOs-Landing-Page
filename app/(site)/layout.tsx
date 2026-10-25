@@ -1,5 +1,6 @@
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
+import { ThemeToggle } from "@/components/site/ThemeToggle";
 
 /** Every public page shares one header (with the V1 menus) and one footer. */
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
@@ -11,7 +12,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       >
         Skip to content
       </a>
-      <SiteHeader />
+      <SiteHeader themeToggle={<ThemeToggle />} />
       <main id="main">{children}</main>
       <SiteFooter />
     </>

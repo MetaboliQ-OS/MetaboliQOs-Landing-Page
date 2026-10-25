@@ -3,6 +3,21 @@
 import { useState } from "react";
 import { formatPrimaryInterests } from "@/lib/waitlist";
 
+type Enquiry = {
+  id: string;
+  type: "partner" | "corporate";
+  name: string;
+  workEmail: string;
+  organisation: string;
+  role: string | null;
+  country: string;
+  interest: string;
+  population: string | null;
+  message: string | null;
+  marketingOptIn: boolean;
+  createdAt: string;
+};
+
 type WaitlistUser = {
   id: string;
   email: string;
@@ -25,6 +40,8 @@ export default function AdminWaitlistPage() {
   const [betaCount, setBetaCount] = useState(0);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
+  const [enquiryError, setEnquiryError] = useState("");
 
   async function loadWaitlist() {
     setLoading(true);
@@ -42,10 +59,26 @@ export default function AdminWaitlistPage() {
       setTotal(data.total ?? 0);
       setVipCount(data.vip ?? 0);
       setBetaCount(data.betaWaitlist ?? 0);
+      await loadEnquiries();
     } catch {
       setError("Network error while loading waitlist.");
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function loadEnquiries() {
+    setEnquiryError("");
+    try {
+      const response = await fetch("/api/admin/enquiries", { headers: { "x-admin-secret": secret } });
+      const data = await response.json();
+      if (!response.ok) {
+        setEnquiryError(data.message ?? "Failed to load enquiries.");
+        return;
+      }
+      setEnquiries(data.enquiries ?? []);
+    } catch {
+      setEnquiryError("Network error while loading enquiries.");
     }
   }
 
@@ -65,7 +98,7 @@ export default function AdminWaitlistPage() {
           value={secret}
           onChange={(e) => setSecret(e.target.value)}
           placeholder="Enter ADMIN_SECRET"
-          className="w-full rounded-xl border border-[rgba(201,168,76,0.2)] bg-[#0f0f0f] px-4 py-3 outline-none"
+          className="w-full rounded-xl border border-[var(--line-strong)] bg-[var(--background)] px-4 py-3 outline-none"
         />
         <button
           type="button"
@@ -75,7 +108,7 @@ export default function AdminWaitlistPage() {
         >
           {loading ? "Loading..." : "Load applications"}
         </button>
-        {error && <p className="text-sm text-red-400">{error}</p>}
+        {error && <p className="text-sm text-[var(--red)]">{error}</p>}
       </div>
 
       <div className="glass mt-6 rounded-2xl p-6">
@@ -91,22 +124,22 @@ export default function AdminWaitlistPage() {
             {users.map((user) => (
               <li
                 key={user.id}
-                className="rounded-lg border border-[rgba(201,168,76,0.18)] bg-[#111111] px-4 py-4"
+                className="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-4 py-4"
               >
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="font-medium">
                     {[user.firstName, user.lastName].filter(Boolean).join(" ") || "—"}
                   </span>
                   <span className="text-sm text-text-secondary">{user.email}</span>
-                  <span className="rounded-full bg-[rgba(74,158,232,0.15)] px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-[#7eb8f0]">
+                  <span className="rounded-full bg-[var(--surface-3)] px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-[var(--blue)]">
                     User
                   </span>
                   {user.isVip ? (
-                    <span className="rounded-full bg-[rgba(201,168,76,0.15)] px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-[#e8c76a]">
+                    <span className="rounded-full bg-[var(--gold-wash)] px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-[var(--gold-ink)]">
                       VIP{user.founderNumber ? ` #${user.founderNumber}` : ""}
                     </span>
                   ) : (
-                    <span className="rounded-full bg-[rgba(255,255,255,0.06)] px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-text-muted">
+                    <span className="rounded-full bg-[var(--surface-3)] px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-text-muted">
                       Awaiting beta
                     </span>
                   )}
@@ -123,6 +156,48 @@ export default function AdminWaitlistPage() {
                 <p className="mt-2 text-xs text-text-muted">
                   {new Date(user.createdAt).toLocaleString()}
                 </p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className="glass mt-6 rounded-2xl p-6">
+        <h2 className="text-xl font-semibold">Partner &amp; corporate enquiries</h2>
+        <div className="mb-4 mt-2 flex flex-wrap gap-4 text-sm text-text-secondary">
+          <span>Partners: {enquiries.filter((e) => e.type === "partner").length}</span>
+          <span>Corporate: {enquiries.filter((e) => e.type === "corporate").length}</span>
+        </div>
+        {enquiryError && <p className="mb-3 text-sm text-[var(--red)]">{enquiryError}</p>}
+        {enquiries.length === 0 ? (
+          <p className="text-sm text-text-secondary">No enquiries loaded yet.</p>
+        ) : (
+          <ul className="space-y-3">
+            {enquiries.map((e) => (
+              <li key={e.id} className="rounded-lg border border-[var(--line)] bg-[var(--surface-2)] px-4 py-4">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="font-medium">{e.name}</span>
+                  <a href={`mailto:${e.workEmail}`} className="text-sm text-text-secondary hover:underline">
+                    {e.workEmail}
+                  </a>
+                  <span className="rounded-full bg-[var(--gold-wash)] px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-[var(--gold-ink)]">
+                    {e.type}
+                  </span>
+                  {e.marketingOptIn ? (
+                    <span className="rounded-full bg-[var(--surface-3)] px-2 py-0.5 text-[0.65rem] font-bold uppercase tracking-wider text-text-muted">
+                      Updates opt-in
+                    </span>
+                  ) : null}
+                </div>
+                <div className="mt-2 grid gap-1 text-xs text-text-secondary sm:grid-cols-2">
+                  <span>Organisation: {e.organisation}</span>
+                  <span>Country: {e.country}</span>
+                  {e.role ? <span>Role: {e.role}</span> : null}
+                  {e.population ? <span>Population: {e.population}</span> : null}
+                  <span className="sm:col-span-2">Interest: {e.interest}</span>
+                </div>
+                {e.message && <p className="mt-2 whitespace-pre-line text-xs leading-relaxed text-text-muted">{e.message}</p>}
+                <p className="mt-2 text-xs text-text-muted">{new Date(e.createdAt).toLocaleString()}</p>
               </li>
             ))}
           </ul>

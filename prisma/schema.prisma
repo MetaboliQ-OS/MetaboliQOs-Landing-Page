@@ -40,3 +40,23 @@ model WaitlistUser {
   welcomeEmailSentAt DateTime?
   createdAt          DateTime  @default(now())
 }
+
+/// Professional (partner) and corporate interest forms from the public site
+/// (Live V1 §11–12). Interest only — no payment, no patient records.
+model InterestEnquiry {
+  id             String   @id @default(cuid())
+  type           String /// "partner" | "corporate"
+  name           String
+  workEmail      String
+  organisation   String
+  role           String?
+  country        String
+  interest       String /// partnership interest (partner) or area of interest (corporate)
+  population     String? /// workforce or member population (corporate, optional)
+  message        String?
+  contactConsent Boolean
+  marketingOptIn Boolean  @default(false)
+  createdAt      DateTime @default(now())
+
+  @@index([type, createdAt])
+}
